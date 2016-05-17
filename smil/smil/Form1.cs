@@ -16,5 +16,20 @@ namespace smil
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            returnObj arr = new returnObj(0);
+            arr.Add("tekst");
+            if(arr[0] == 0)
+            {
+                label1.Text = arr[1];
+            }
+        }
     }
 }
