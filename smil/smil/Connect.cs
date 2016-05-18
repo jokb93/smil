@@ -15,12 +15,16 @@ namespace smil
         // Constructor is 'protected'
         protected Connect()
         {
-            SqlConnection Con = new SqlConnection("user id=root;" +
-                                       "password=kony2012;" + 
-                                       "server=holydb;" +
-                                       "Trusted_Connection=yes;" +
-                                       "database=SMIL; " +
-                                       "connection timeout=30");
+            //Con = new SqlConnection("user id=superuser;" +
+            //                            "password=kony2012;" +
+            //                            "server=146.185.149.25;" +
+            //                            "Trusted_Connection=yes;" +
+            //                            "database=SMIL;" +
+            //                            "connection timeout=30");
+
+      
+            string Constring = "Data Source=tcp:146.185.149.25;Initial Catalog=SMIL;User ID=superuser;Password=kony2012;";
+            Con = new SqlConnection(Constring);
         }
 
         public static Connect Conn()

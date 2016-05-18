@@ -19,6 +19,7 @@ namespace smil
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Connect k1 = Connect.Conn();
 
         }
 
@@ -30,6 +31,13 @@ namespace smil
             {
                 label1.Text = arr[1];
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpretLokale nr1 = new OpretLokale();
+            returnObj message = nr1.Nytlokale();
+            MessageBox.Show(message[1]);
         }
     }
 }
