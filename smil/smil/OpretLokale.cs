@@ -14,18 +14,23 @@ namespace smil
             try
             {
 
-                Connect connection = Connect.Conn();
+                if(Connect.query("INSERT INTO `SMIL`.`lokale` (`id`) VALUES (NULL);"))
+                {
 
-                connection.Con.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO `SMIL`.`lokale` (`id`) VALUES (NULL);", connection.Con);
-                cmd.ExecuteNonQuery();
-                connection.Con.Close();
+                    returnObj Arr = new returnObj(2);  // type 2 er opret lokale
+                    Arr.Add("Lokalet er oprettet");
 
-                returnObj Arr = new returnObj(2);  // type 2 er opret lokale
-                Arr.Add("Lokalet er oprettet");
+                    return Arr;
 
-                return Arr;
+                }
+                else
+                {
+                    returnObj Arr = new returnObj(2);  // type 2 er opret lokale
+                    Arr.Add("forbindelses fejl");
+
+                    return Arr;
+                }
             }
             catch
             {

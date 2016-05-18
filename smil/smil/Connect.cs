@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 
 namespace smil
@@ -11,20 +12,11 @@ namespace smil
     class Connect
     {
         private static Connect Connection;
-        public SqlConnection Con;
+        public static MySqlConnection Con;
         // Constructor is 'protected'
         protected Connect()
         {
-            //Con = new SqlConnection("user id=superuser;" +
-            //                            "password=kony2012;" +
-            //                            "server=146.185.149.25;" +
-            //                            "Trusted_Connection=yes;" +
-            //                            "database=SMIL;" +
-            //                            "connection timeout=30");
-
-      
-            string Constring = "Data Source=tcp:146.185.149.25;Initial Catalog=SMIL;User ID=superuser;Password=kony2012;";
-            Con = new SqlConnection(Constring);
+            Con = new MySqlConnection("Server=146.185.149.25; Port=3306; Database=SMIL; Uid=superuser; Pwd=kony2012;");
         }
 
         public static Connect Conn()
@@ -36,5 +28,40 @@ namespace smil
 
             return Connection;
         }
+
+        public static bool query(string query)
+        {
+
+            if (Connection == null)
+            {
+                Connection = new Connect();
+            }
+
+            try
+            {
+                Con.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+                //Assign the query using CommandText
+                cmd.CommandText = query;
+                //Assign the connection using Connection
+                cmd.Connection = Con;
+
+                //Execute query
+                cmd.ExecuteNonQuery();
+
+                //close connection
+                Con.Close();
+
+                return true;
+            }
+            catch
+            {
+
+                return false;
+
+            }
+        }
+
     }
 }
