@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace smil
 {
-    class OpretPersonale
+    class Personale
     {
         public returnObj NytPersonale(string navn, string titel)
     {

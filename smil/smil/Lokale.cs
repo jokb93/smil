@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace smil
 {
-    class OpretLokale
+    class Lokale
     {
         public returnObj Nytlokale()
         {
