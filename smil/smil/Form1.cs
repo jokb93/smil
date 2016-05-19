@@ -79,5 +79,16 @@ namespace smil
             Personale nr3 = new Personale();
             resultHandler(nr3.SletPersonale(3));
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            double[] pris = new double[] {13,105,1101,98765,1212,123,312,5432 };
+            string[] behandling = new string[] { "bedøvelse", "av av av", "fuck","lort","røv" };
+            string[] kunde = new string[] { "Lasse Andersen", "gørnvej", "8700", "horsen", "1", "3232", "19-05-16" };
+            Faktura fakt = new Faktura();
+            fakt.Fakt(pris, behandling, kunde);
+            returnObj besked = fakt.Fakt(pris, behandling, kunde);
+            MessageBox.Show(besked[1]);
+        }
     }
 }
