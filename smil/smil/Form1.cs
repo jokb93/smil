@@ -70,8 +70,8 @@ namespace smil
         
         private void button2_Click(object sender, EventArgs e)
         {
-            Lokale lokale = new Lokale();
-            resultHandler(lokale.sletKval(24,1));
+            Personale person = new Personale();
+            resultHandler(person.retPersonale("jens Lambæk","hjælper",1));
         }
 
         private void button3_Click(object sender, EventArgs e)
