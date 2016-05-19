@@ -16,5 +16,12 @@ namespace smil
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Personale person = new Personale();
+            returnObj res = person.retPersonale("Martin Hanse", "Elev", 2);
+            MessageBox.Show(res[1]);
+        }
     }
 }
