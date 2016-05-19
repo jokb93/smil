@@ -109,6 +109,40 @@ namespace smil
             }
 
         }
+
+        public returnObj sletLokale(int lokaleId)
+        {
+
+            try
+            {
+
+                if (Connect.query("DELETE FROM `lokale` WHERE `id` = " + lokaleId))
+                {
+
+
+                    returnObj Arr = new returnObj(6);  // type 6 er opret lokale
+                    Arr.Add("Lokale blev slettet");
+
+                    return Arr;
+
+                }
+                else
+                {
+                    returnObj Arr = new returnObj(0);  // type 6 er opret lokale
+                    Arr.Add("forbindelses fejl");
+
+                    return Arr;
+                }
+            }
+            catch
+            {
+                returnObj Arr = new returnObj(0);  // type 0 er fejlmelding
+                Arr.Add("Lokale kunne ikke slettes");
+
+                return Arr;
+            }
+
+        }
     }
    // public returnObj Nytlokale()
 }
