@@ -56,6 +56,7 @@
     </Compile>
     <Compile Include="opretBehandling.cs" />
     <Compile Include="OpretLokale.cs" />
+    <Compile Include="OpretPersonale.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="returnObj.cs" />

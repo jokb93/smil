@@ -65,5 +65,13 @@ namespace smil
             DateTime date = DateTime.Now;
             resultHandler(behandling.opretTid(3,1, date,24,1));
         }
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpretPersonale nr2 = new OpretPersonale();
+            returnObj message = nr2.NytPersonale("johnny", "klinikassistent");
+            MessageBox.Show(message[1]);
+        }
     }
 }
