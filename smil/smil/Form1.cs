@@ -56,22 +56,17 @@ namespace smil
             {
                 MessageBox.Show(res[1]);
             }
-            
-        }
+            else if (res[0] == 10)
+            {
+                MessageBox.Show(res[1]);
+            }
 
+        }
+        
         private void button2_Click(object sender, EventArgs e)
         {
-            opretBehandling behandling = new opretBehandling();
-            DateTime date = DateTime.Now;
-            resultHandler(behandling.opretTid(3,1, date,24,1));
-        }
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            OpretPersonale nr2 = new OpretPersonale();
-            returnObj message = nr2.NytPersonale("johnny", "klinikassistent");
-            MessageBox.Show(message[1]);
+            Kvalifikationer kval = new Kvalifikationer();
+            resultHandler(kval.opret("Tand fræsning"));
         }
     }
 }

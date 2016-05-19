@@ -54,7 +54,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="opretBehandling.cs" />
+    <Compile Include="Kvalifikationer.cs" />
+    <Compile Include="OpretBehandling.cs" />
     <Compile Include="OpretLokale.cs" />
     <Compile Include="OpretPersonale.cs" />
     <Compile Include="Program.cs" />

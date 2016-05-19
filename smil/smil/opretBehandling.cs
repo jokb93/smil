@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace smil
 {
-    class opretBehandling
+    class OpretBehandling
     {
 
         public returnObj opretTid(int type, int patientid, DateTime date, int lokaleId, int personaleId)
