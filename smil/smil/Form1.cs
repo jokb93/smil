@@ -35,9 +35,6 @@ namespace smil
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpretLokale nr1 = new OpretLokale();
-            returnObj message = nr1.Nytlokale();
-            resultHandler(message);
         }
 
         private void resultHandler(returnObj res)
@@ -66,15 +63,12 @@ namespace smil
         private void button2_Click(object sender, EventArgs e)
         {
             Behandling behandling = new Behandling();
-            DateTime date = DateTime.Now.AddDays(3);
+            DateTime date = DateTime.Now.AddDays(7);
             resultHandler(behandling.rediger(20, 1, 1, date,29,3));
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            SletPersonale nr3 = new SletPersonale();
-            returnObj message = nr3.SletP(3);
-            MessageBox.Show(message[1]);
         }
     }
 }

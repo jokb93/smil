@@ -38,12 +38,12 @@
             this.returnObjBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.returnObjBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.opretLokaleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mySqlGeometryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnObjBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnObjBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnObjBindingSource2)).BeginInit();
-            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -74,10 +74,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 2;
-            // 
-            // opretLokaleBindingSource
-            // 
-            this.opretLokaleBindingSource.DataSource = typeof(smil.OpretLokale);
             // 
             // mySqlGeometryBindingSource
             // 
@@ -119,8 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 414);
-            this.ClientSize = new System.Drawing.Size(548, 336);
+            this.ClientSize = new System.Drawing.Size(726, 398);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.comboBox1);
