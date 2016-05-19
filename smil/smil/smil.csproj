@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connect.cs" />
+    <Compile Include="Faktura.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
