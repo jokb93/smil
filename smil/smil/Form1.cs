@@ -61,14 +61,17 @@ namespace smil
             {
                 MessageBox.Show(res[1]);
             }
+            else if (res[0] == 11)
+            {
+                MessageBox.Show(res[1]);
+            }
 
         }
         
         private void button2_Click(object sender, EventArgs e)
         {
-            Behandling behandling = new Behandling();
-            DateTime date = DateTime.Now.AddDays(7);
-            resultHandler(behandling.rediger(20, 1, 1, date,29,3));
+            Lokale lokale = new Lokale();
+            resultHandler(lokale.sletKval(24,1));
         }
 
         private void button3_Click(object sender, EventArgs e)
