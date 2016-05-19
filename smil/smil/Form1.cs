@@ -69,5 +69,12 @@ namespace smil
             DateTime date = DateTime.Now.AddDays(3);
             resultHandler(behandling.rediger(20, 1, 1, date,29,3));
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SletPersonale nr3 = new SletPersonale();
+            returnObj message = nr3.SletP(3);
+            MessageBox.Show(message[1]);
+        }
     }
 }
