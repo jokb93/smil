@@ -53,6 +53,10 @@ namespace smil
             {
                 MessageBox.Show(res[1]);
             }
+            else if (res[0] == 8)
+            {
+                MessageBox.Show(res[1]);
+            }
             else if (res[0] == 10)
             {
                 MessageBox.Show(res[1]);
@@ -69,6 +73,8 @@ namespace smil
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Personale nr3 = new Personale();
+            resultHandler(nr3.SletPersonale(3));
         }
     }
 }

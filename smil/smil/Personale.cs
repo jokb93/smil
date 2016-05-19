@@ -12,6 +12,39 @@ namespace smil
 {
     class Personale
     {
+        public returnObj SletPersonale(int id)
+        {
+
+            try
+            {
+
+                if (Connect.query("DELETE FROM `SMIL`.`personale` WHERE id = "+ id + ";"))
+                {
+
+
+                    returnObj Arr = new returnObj(8);  // type 8 er slet personale
+                    Arr.Add("Personale er slettet");
+
+                    return Arr;
+
+                }
+                else
+                {
+                    returnObj Arr = new returnObj(0);  // type 0 er fejlmelding
+                    Arr.Add("Personalet har fremtidige behandlingstider");
+
+                    return Arr;
+                }
+            }
+            catch
+            {
+                returnObj Arr = new returnObj(0);  // type 0 er fejlmelding
+                Arr.Add("Personale kunne ikke oprettes");
+
+                return Arr;
+            }
+        }
+
         public returnObj NytPersonale(string navn, string titel)
     {
 
