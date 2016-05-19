@@ -52,8 +52,18 @@ namespace smil
             {
                 MessageBox.Show(res[1]);
             }
-
+            else if (res[0] == 3)
+            {
+                MessageBox.Show(res[1]);
+            }
+            
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            opretBehandling behandling = new opretBehandling();
+            DateTime date = DateTime.Now;
+            resultHandler(behandling.opretTid(3,1, date,24,1));
+        }
     }
 }

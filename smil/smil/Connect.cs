@@ -30,7 +30,7 @@ namespace smil
             return Connection;
         }
 
-        public static dynamic query(string query)
+        public static bool query(string query)
         {
 
             if (Connection == null)
@@ -64,9 +64,25 @@ namespace smil
             }
         }
 
-        public MySqlCommand getCmd()
+        public static MySqlCommand getCmd()
         {
             return cmd;
+        }
+
+        public static int insertID()
+        {
+            try
+            {
+                int id = Convert.ToInt32(cmd.LastInsertedId);
+
+                return id;
+
+            }
+            catch
+            {
+                return 0;
+            }
+            
         }
 
     }
