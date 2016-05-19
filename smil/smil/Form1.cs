@@ -40,13 +40,17 @@ namespace smil
             resultHandler(message);
         }
 
-        private void resultHandler(returnObj result)
+        private void resultHandler(returnObj res)
         {
 
-            if(result[0]  == 0)
+            if (res[0] == 0)
             {
                 // Fejlmelding
-                MessageBox.Show(result[1]);
+                MessageBox.Show(res[1]);
+            }
+            else if (res[0] == 2)
+            {
+                MessageBox.Show(res[1]);
             }
 
         }
