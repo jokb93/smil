@@ -55,5 +55,12 @@ namespace smil
 
         }
 
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpretPersonale nr2 = new OpretPersonale();
+            returnObj message = nr2.NytPersonale("johnny", "klinikassistent");
+            MessageBox.Show(message[1]);
+        }
     }
 }
