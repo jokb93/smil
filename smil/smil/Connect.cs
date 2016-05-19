@@ -13,6 +13,7 @@ namespace smil
     {
         private static Connect Connection;
         public static MySqlConnection Con;
+        public static MySqlCommand cmd;
         // Constructor is 'protected'
         protected Connect()
         {
@@ -29,7 +30,7 @@ namespace smil
             return Connection;
         }
 
-        public static bool query(string query)
+        public static dynamic query(string query)
         {
 
             if (Connection == null)
@@ -41,7 +42,7 @@ namespace smil
             {
                 Con.Open();
 
-                MySqlCommand cmd = new MySqlCommand();
+                cmd = new MySqlCommand();
                 //Assign the query using CommandText
                 cmd.CommandText = query;
                 //Assign the connection using Connection
@@ -61,6 +62,11 @@ namespace smil
                 return false;
 
             }
+        }
+
+        public MySqlCommand getCmd()
+        {
+            return cmd;
         }
 
     }
