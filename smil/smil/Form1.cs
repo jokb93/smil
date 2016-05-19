@@ -17,78 +17,11 @@ namespace smil
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            Connect k1 = Connect.Conn();
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            returnObj arr = new returnObj(0);
-            arr.Add("tekst");
-            if(arr[0] == 0)
-            {
-                label1.Text = arr[1];
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-        }
-
-        private void resultHandler(returnObj res)
-        {
-
-            if (res[0] == 0)
-            {
-                // Fejlmelding
-                MessageBox.Show(res[1]);
-            }
-            else if (res[0] == 2)
-            {
-                MessageBox.Show(res[1]);
-            }
-            else if (res[0] == 3)
-            {
-                MessageBox.Show(res[1]);
-            }
-            else if (res[0] == 8)
-            {
-                MessageBox.Show(res[1]);
-            }
-            else if (res[0] == 10)
-            {
-                MessageBox.Show(res[1]);
-            }
-            else if (res[0] == 11)
-            {
-                MessageBox.Show(res[1]);
-            }
-
-        }
-        
-        private void button2_Click(object sender, EventArgs e)
-        {
             Personale person = new Personale();
-            resultHandler(person.retPersonale("jens Lambæk","hjælper",1));
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Personale nr3 = new Personale();
-            resultHandler(nr3.SletPersonale(3));
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            double[] pris = new double[] {13,105,1101,98765,1212,123,312,5432 };
-            string[] behandling = new string[] { "bedøvelse", "av av av", "fuck","lort","røv" };
-            string[] kunde = new string[] { "Lasse Andersen", "gørnvej", "8700", "horsen", "1", "3232", "19-05-16" };
-            Faktura fakt = new Faktura();
-            fakt.Fakt(pris, behandling, kunde);
-            returnObj besked = fakt.Fakt(pris, behandling, kunde);
-            MessageBox.Show(besked[1]);
+            returnObj res = person.retPersonale("Martin Hanse", "Elev", 2);
+            MessageBox.Show(res[1]);
         }
     }
 }
