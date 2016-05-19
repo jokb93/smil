@@ -37,7 +37,19 @@ namespace smil
         {
             OpretLokale nr1 = new OpretLokale();
             returnObj message = nr1.Nytlokale();
-            MessageBox.Show(message[1]);
+            resultHandler(message);
         }
+
+        private void resultHandler(returnObj result)
+        {
+
+            if(result[0]  == 0)
+            {
+                // Fejlmelding
+                MessageBox.Show(result[1]);
+            }
+
+        }
+
     }
 }
