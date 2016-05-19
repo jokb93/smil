@@ -65,8 +65,9 @@ namespace smil
         
         private void button2_Click(object sender, EventArgs e)
         {
-            Kvalifikationer kval = new Kvalifikationer();
-            resultHandler(kval.opret("Tand fræsning"));
+            Behandling behandling = new Behandling();
+            DateTime date = DateTime.Now.AddDays(3);
+            resultHandler(behandling.rediger(20, 1, 1, date,29,3));
         }
     }
 }

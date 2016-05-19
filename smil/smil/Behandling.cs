@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace smil
 {
-    class OpretBehandling
+    class Behandling
     {
 
         public returnObj opretTid(int type, int patientid, DateTime date, int lokaleId, int personaleId)
@@ -39,6 +39,47 @@ namespace smil
                     return Arr;
                 }
                     
+
+            }
+            else
+            {
+                returnObj Arr = new returnObj(0);  // type 2 er opret lokale
+                Arr.Add("forbindelses fejl");
+
+                return Arr;
+            }
+        }
+
+        public returnObj rediger(int id, int type, int patientid, DateTime date, int lokaleId, int personaleId)
+        {
+            if (Connect.query("UPDATE `SMIL`.`behandling` SET `type` = '" + type + "', `patientid` = '" + patientid + "', `dato` = '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE `behandling`.`id` = " + id + ""))
+            {
+                int behandlingsId = Connect.insertID();
+                if (Connect.query("UPDATE `SMIL`.`behandlingslokale` SET `lokaleid` = '"+ lokaleId + "' WHERE `behandlingslokale`.`behandlingid` = " + id + ""))
+                {
+                    if (Connect.query("UPDATE `SMIL`.`behandlingspersonale` SET `personaleid` = '"+ personaleId + "' WHERE `behandlingspersonale`.`behandlingsid` = " + id + ""))
+                    {
+                        returnObj Arr = new returnObj(3);  // type 3 er opret behandling
+                        Arr.Add("Behandling rettet");
+
+                        return Arr;
+                    }
+                    else
+                    {
+                        returnObj Arr = new returnObj(0);  // type 2 er opret lokale
+                        Arr.Add("forbindelses fejl");
+
+                        return Arr;
+                    }
+                }
+                else
+                {
+                    returnObj Arr = new returnObj(0);  // type 2 er opret lokale
+                    Arr.Add("forbindelses fejl");
+
+                    return Arr;
+                }
+
 
             }
             else
