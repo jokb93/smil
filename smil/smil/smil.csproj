@@ -59,12 +59,21 @@
     <Compile Include="Behandling.cs" />
     <Compile Include="Lokale.cs" />
     <Compile Include="Personale.cs" />
+    <Compile Include="PersonaleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonaleForm.Designer.cs">
+      <DependentUpon>PersonaleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="returnObj.cs" />
     <Compile Include="returnObjEngine.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonaleForm.resx">
+      <DependentUpon>PersonaleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
