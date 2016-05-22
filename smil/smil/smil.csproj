@@ -58,6 +58,7 @@
     <Compile Include="Kvalifikationer.cs" />
     <Compile Include="Behandling.cs" />
     <Compile Include="Lokale.cs" />
+    <Compile Include="Patient.cs" />
     <Compile Include="Personale.cs" />
     <Compile Include="PersonaleForm.cs">
       <SubType>Form</SubType>
