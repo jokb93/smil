@@ -28,22 +28,170 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.personaleDropdown = new System.Windows.Forms.ComboBox();
+            this.pickpersonale = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.addRemoveKval = new System.Windows.Forms.Button();
+            this.nytPersonale = new System.Windows.Forms.Button();
+            this.Gem = new System.Windows.Forms.Button();
+            this.slet = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // personaleDropdown
+            // 
+            this.personaleDropdown.FormattingEnabled = true;
+            this.personaleDropdown.Location = new System.Drawing.Point(150, 12);
+            this.personaleDropdown.Name = "personaleDropdown";
+            this.personaleDropdown.Size = new System.Drawing.Size(322, 24);
+            this.personaleDropdown.TabIndex = 0;
+            this.personaleDropdown.SelectedIndexChanged += new System.EventHandler(this.personaleDropdown_SelectedIndexChanged);
+            // 
+            // pickpersonale
+            // 
+            this.pickpersonale.AutoSize = true;
+            this.pickpersonale.Location = new System.Drawing.Point(12, 14);
+            this.pickpersonale.Name = "pickpersonale";
+            this.pickpersonale.Size = new System.Drawing.Size(112, 17);
+            this.pickpersonale.TabIndex = 1;
+            this.pickpersonale.Text = "Vælg personale:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Fulde navn:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(150, 42);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(407, 22);
+            this.textBox1.TabIndex = 3;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(150, 70);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(407, 22);
+            this.textBox2.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Stilling:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 101);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Kvalifikationer:";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(150, 99);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(407, 100);
+            this.listBox1.Sorted = true;
+            this.listBox1.TabIndex = 8;
+            // 
+            // addRemoveKval
+            // 
+            this.addRemoveKval.Location = new System.Drawing.Point(13, 122);
+            this.addRemoveKval.Name = "addRemoveKval";
+            this.addRemoveKval.Size = new System.Drawing.Size(111, 30);
+            this.addRemoveKval.TabIndex = 9;
+            this.addRemoveKval.Text = "Tilføj/Fjern";
+            this.addRemoveKval.UseVisualStyleBackColor = true;
+            this.addRemoveKval.Click += new System.EventHandler(this.addRemoveKval_Click);
+            // 
+            // nytPersonale
+            // 
+            this.nytPersonale.Location = new System.Drawing.Point(478, 10);
+            this.nytPersonale.Name = "nytPersonale";
+            this.nytPersonale.Size = new System.Drawing.Size(79, 27);
+            this.nytPersonale.TabIndex = 10;
+            this.nytPersonale.Text = "Opret ny";
+            this.nytPersonale.UseVisualStyleBackColor = true;
+            // 
+            // Gem
+            // 
+            this.Gem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gem.Location = new System.Drawing.Point(478, 206);
+            this.Gem.Name = "Gem";
+            this.Gem.Size = new System.Drawing.Size(78, 38);
+            this.Gem.TabIndex = 11;
+            this.Gem.Text = "Gem";
+            this.Gem.UseVisualStyleBackColor = true;
+            // 
+            // slet
+            // 
+            this.slet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.slet.Location = new System.Drawing.Point(394, 205);
+            this.slet.Name = "slet";
+            this.slet.Size = new System.Drawing.Size(78, 38);
+            this.slet.TabIndex = 12;
+            this.slet.Text = "Slet";
+            this.slet.UseVisualStyleBackColor = true;
+            this.slet.Click += new System.EventHandler(this.slet_Click);
             // 
             // PersonaleForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(569, 252);
+            this.Controls.Add(this.slet);
+            this.Controls.Add(this.Gem);
+            this.Controls.Add(this.nytPersonale);
+            this.Controls.Add(this.addRemoveKval);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pickpersonale);
+            this.Controls.Add(this.personaleDropdown);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PersonaleForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Text = "PersonaleForm";
+            this.Text = "Personale explorer";
             this.Load += new System.EventHandler(this.PersonaleForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ComboBox personaleDropdown;
+        private System.Windows.Forms.Label pickpersonale;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button addRemoveKval;
+        private System.Windows.Forms.Button nytPersonale;
+        private System.Windows.Forms.Button Gem;
+        private System.Windows.Forms.Button slet;
     }
 }
