@@ -31,8 +31,8 @@
             this.personaleDropdown = new System.Windows.Forms.ComboBox();
             this.pickpersonale = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.navnBox = new System.Windows.Forms.TextBox();
+            this.stillingBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -69,19 +69,20 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Fulde navn:";
             // 
-            // textBox1
+            // navnBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(150, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(407, 22);
-            this.textBox1.TabIndex = 3;
+            this.navnBox.Location = new System.Drawing.Point(150, 42);
+            this.navnBox.Name = "navnBox";
+            this.navnBox.Size = new System.Drawing.Size(407, 22);
+            this.navnBox.TabIndex = 3;
+            this.navnBox.TextChanged += new System.EventHandler(this.navn_TextChanged);
             // 
-            // textBox2
+            // stillingBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(150, 70);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(407, 22);
-            this.textBox2.TabIndex = 6;
+            this.stillingBox.Location = new System.Drawing.Point(150, 70);
+            this.stillingBox.Name = "stillingBox";
+            this.stillingBox.Size = new System.Drawing.Size(407, 22);
+            this.stillingBox.TabIndex = 6;
             // 
             // label3
             // 
@@ -162,14 +163,14 @@
             this.Controls.Add(this.addRemoveKval);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.stillingBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.navnBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pickpersonale);
             this.Controls.Add(this.personaleDropdown);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PersonaleForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Personale explorer";
@@ -184,8 +185,8 @@
         private System.Windows.Forms.ComboBox personaleDropdown;
         private System.Windows.Forms.Label pickpersonale;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox navnBox;
+        private System.Windows.Forms.TextBox stillingBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBox1;

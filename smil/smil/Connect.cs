@@ -85,5 +85,36 @@ namespace smil
             
         }
 
+        public static bool select(string query)
+        {
+
+            if (Connection == null)
+            {
+                Connection = new Connect();
+            }
+
+            try
+            {
+                Con.Open();
+
+                cmd = new MySqlCommand();
+                //Assign the query using CommandText
+                cmd.CommandText = query;
+                //Assign the connection using Connection
+                cmd.Connection = Con;
+
+                //Execute query
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+            catch
+            {
+
+                return false;
+
+            }
+        }
+
     }
 }

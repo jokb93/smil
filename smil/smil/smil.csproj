@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComboboxItem.cs" />
     <Compile Include="confirmPersonaleDelte.cs">
       <SubType>Form</SubType>
     </Compile>

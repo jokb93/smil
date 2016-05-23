@@ -21,11 +21,18 @@ namespace smil
                 returnObj arr = personer.selectPersonale();
 
                 MySqlDataReader reader = arr[1].ExecuteReader();
-
+                
                 while (reader.Read())
                 {
-                    personaleDropdown.Items.Add(reader["navn"]);
+                    ComboboxItem item = new ComboboxItem();
+                    item.Text = reader["navn"].ToString();
+                    returnObj res = new returnObj(reader["id"]);
+                    res.Add(reader["navn"]);
+                    res.Add(reader["stilling"]);
+                    item.Value = res;
+                    personaleDropdown.Items.Add(item);
                 }
+                Connect.Con.Close();
 
                 personaleDropdown.SelectedIndex = 0;
             } catch
@@ -52,7 +59,11 @@ namespace smil
 
         private void personaleDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            int id = (personaleDropdown.SelectedItem as ComboboxItem).Value[0];
+            string navn = (personaleDropdown.SelectedItem as ComboboxItem).Value[1];
+            string stilling = (personaleDropdown.SelectedItem as ComboboxItem).Value[2];
+            navnBox.Text = navn;
+            stillingBox.Text = stilling;
         }
 
         private void slet_Click(object sender, EventArgs e)
@@ -65,6 +76,11 @@ namespace smil
 
         void deletePerson(object sender, FormClosedEventArgs e)
         {
+        }
+
+        private void navn_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

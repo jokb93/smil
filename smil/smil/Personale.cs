@@ -168,7 +168,7 @@ namespace smil
 
         public returnObj selectPersonale()
         {
-            if (Connect.query("SELECT * FROM `SMIL`.`personale`"))
+            if (Connect.select("SELECT * FROM `SMIL`.`personale`"))
             {
 
 
