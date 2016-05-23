@@ -111,6 +111,7 @@
             this.Kvalifikationer.Size = new System.Drawing.Size(407, 100);
             this.Kvalifikationer.Sorted = true;
             this.Kvalifikationer.TabIndex = 8;
+            this.Kvalifikationer.SelectedIndexChanged += new System.EventHandler(this.Kvalifikationer_SelectedIndexChanged);
             // 
             // addRemoveKval
             // 

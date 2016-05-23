@@ -66,13 +66,13 @@ namespace smil
             stillingBox.Text = stilling;
             Personale member = new Personale();
             returnObj MemArr = member.selectKval(id);
-            MessageBox.Show(MemArr[1]);
             MySqlDataReader reader = MemArr[1].ExecuteReader();
-
+            Kvalifikationer.Items.Clear();
             while (reader.Read())
             {
                 Kvalifikationer.Items.Add(reader["navn"]);
             }
+            Connect.Con.Close();
 
         }
 
@@ -89,6 +89,11 @@ namespace smil
         }
 
         private void navn_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Kvalifikationer_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

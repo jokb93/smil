@@ -24,5 +24,25 @@ namespace smil
                 return Arr;
             }
         }
+
+        public returnObj selectKval()
+        {
+            if (Connect.select("SELECT * FROM `kvalifikationsKatalog`"))
+            {
+
+
+                returnObj Arr = new returnObj(12);
+                Arr.Add(Connect.cmd);
+                return Arr;
+
+            }
+            else
+            {
+                returnObj Arr = new returnObj(0);
+                Arr.Add("forbindelses fejl");
+
+                return Arr;
+            }
+        }
     }
 }

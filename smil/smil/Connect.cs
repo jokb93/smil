@@ -95,6 +95,7 @@ namespace smil
 
             try
             {
+                Con.Close();
                 Con.Open();
 
                 cmd = new MySqlCommand();

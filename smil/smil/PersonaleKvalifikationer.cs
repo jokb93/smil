@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace smil
 {
@@ -21,6 +22,15 @@ namespace smil
         }
 
         private void add_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void alleKval_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

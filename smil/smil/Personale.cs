@@ -188,7 +188,7 @@ namespace smil
 
         public returnObj selectKval(int id)
         {
-            if (Connect.select("SELECT * FROM `kvalifikationer` WHERE `personaleid` = "+id.ToString()))
+            if (Connect.select("SELECT * FROM `kvalifikationer` INNER JOIN `kvalifikationsKatalog` ON `kvalifikationer` .`type`=`kvalifikationsKatalog`.`type` WHERE `kvalifikationer`.`personaleid` = " + id.ToString()))
             {
 
 
