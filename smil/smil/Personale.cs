@@ -186,6 +186,26 @@ namespace smil
             }
         }
 
+        public returnObj selectKval(int id)
+        {
+            if (Connect.select("SELECT * FROM `kvalifikationer` WHERE `personaleid` = "+id.ToString()))
+            {
+
+
+                returnObj Arr = new returnObj(12);
+                Arr.Add(Connect.cmd);
+                return Arr;
+
+            }
+            else
+            {
+                returnObj Arr = new returnObj(0);
+                Arr.Add("forbindelses fejl");
+
+                return Arr;
+            }
+        }
+
     }
 
 }

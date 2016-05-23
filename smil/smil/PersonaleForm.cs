@@ -28,7 +28,7 @@ namespace smil
                     item.Text = reader["navn"].ToString();
                     returnObj res = new returnObj(reader["id"]);
                     res.Add(reader["navn"]);
-                    res.Add(reader["stilling"]);
+                    res.Add(reader["titel"]);
                     item.Value = res;
                     personaleDropdown.Items.Add(item);
                 }
@@ -64,6 +64,16 @@ namespace smil
             string stilling = (personaleDropdown.SelectedItem as ComboboxItem).Value[2];
             navnBox.Text = navn;
             stillingBox.Text = stilling;
+            Personale member = new Personale();
+            returnObj MemArr = member.selectKval(id);
+            MessageBox.Show(MemArr[1]);
+            MySqlDataReader reader = MemArr[1].ExecuteReader();
+
+            while (reader.Read())
+            {
+                Kvalifikationer.Items.Add(reader["navn"]);
+            }
+
         }
 
         private void slet_Click(object sender, EventArgs e)

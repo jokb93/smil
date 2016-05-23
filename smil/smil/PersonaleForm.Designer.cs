@@ -35,7 +35,7 @@
             this.stillingBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.Kvalifikationer = new System.Windows.Forms.ListBox();
             this.addRemoveKval = new System.Windows.Forms.Button();
             this.nytPersonale = new System.Windows.Forms.Button();
             this.Gem = new System.Windows.Forms.Button();
@@ -102,15 +102,15 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Kvalifikationer:";
             // 
-            // listBox1
+            // Kvalifikationer
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(150, 99);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(407, 100);
-            this.listBox1.Sorted = true;
-            this.listBox1.TabIndex = 8;
+            this.Kvalifikationer.FormattingEnabled = true;
+            this.Kvalifikationer.ItemHeight = 16;
+            this.Kvalifikationer.Location = new System.Drawing.Point(150, 99);
+            this.Kvalifikationer.Name = "Kvalifikationer";
+            this.Kvalifikationer.Size = new System.Drawing.Size(407, 100);
+            this.Kvalifikationer.Sorted = true;
+            this.Kvalifikationer.TabIndex = 8;
             // 
             // addRemoveKval
             // 
@@ -161,7 +161,7 @@
             this.Controls.Add(this.Gem);
             this.Controls.Add(this.nytPersonale);
             this.Controls.Add(this.addRemoveKval);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.Kvalifikationer);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.stillingBox);
             this.Controls.Add(this.label3);
@@ -189,7 +189,7 @@
         private System.Windows.Forms.TextBox stillingBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox Kvalifikationer;
         private System.Windows.Forms.Button addRemoveKval;
         private System.Windows.Forms.Button nytPersonale;
         private System.Windows.Forms.Button Gem;
