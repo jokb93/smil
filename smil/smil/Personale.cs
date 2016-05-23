@@ -87,7 +87,7 @@ namespace smil
                 {
 
 
-                    returnObj Arr = new returnObj(11);  // type 2 er opret lokale
+                    returnObj Arr = new returnObj(11);  
                     Arr.Add("Kvalifikation tilføjet");
 
                     return Arr;
@@ -95,7 +95,7 @@ namespace smil
                 }
                 else
                 {
-                    returnObj Arr = new returnObj(0);  // type 2 er opret lokale
+                    returnObj Arr = new returnObj(0);  
                     Arr.Add("forbindelses fejl");
 
                     return Arr;
@@ -121,7 +121,7 @@ namespace smil
                 {
 
 
-                    returnObj Arr = new returnObj(11);  // type 2 er opret lokale
+                    returnObj Arr = new returnObj(11);  
                     Arr.Add("Kvalifikation slettet");
 
                     return Arr;
@@ -129,7 +129,7 @@ namespace smil
                 }
                 else
                 {
-                    returnObj Arr = new returnObj(0);  // type 2 er opret lokale
+                    returnObj Arr = new returnObj(0);  
                     Arr.Add("forbindelses fejl");
 
                     return Arr;
@@ -151,7 +151,7 @@ namespace smil
             {
 
 
-                returnObj Arr = new returnObj(11);  // type 2 er opret lokale
+                returnObj Arr = new returnObj(11);  
                 Arr.Add("Personale rettet");
 
                 return Arr;
@@ -159,7 +159,27 @@ namespace smil
             }
             else
             {
-                returnObj Arr = new returnObj(0);  // type 2 er opret lokale
+                returnObj Arr = new returnObj(0);  
+                Arr.Add("forbindelses fejl");
+
+                return Arr;
+            }
+        }
+
+        public returnObj selectPersonale()
+        {
+            if (Connect.query("SELECT * FROM `SMIL`.`personale`"))
+            {
+
+
+                returnObj Arr = new returnObj(12);
+                Arr.Add(Connect.cmd);
+                return Arr;
+
+            }
+            else
+            {
+                returnObj Arr = new returnObj(0);  
                 Arr.Add("forbindelses fejl");
 
                 return Arr;

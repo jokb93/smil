@@ -16,6 +16,16 @@ namespace smil
         {
             InitializeComponent();
             try {
+                Personale personer = new Personale();
+                returnObj arr = personer.selectPersonale();
+
+                var reader = arr[1];
+
+                while (reader.Read())
+                {
+                    personaleDropdown.Items.Add(reader["navn"]);
+                }
+
                 personaleDropdown.SelectedIndex = 0;
             } catch
             {

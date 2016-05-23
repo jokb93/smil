@@ -29,8 +29,11 @@ namespace smil
         private void ja_Click(object sender, EventArgs e)
         {
             Personale personale = new Personale();
-            personale.SletPersonale(this.id);
-            MessageBox.Show(Convert.ToString(this.id));
+            returnObj arr = personale.SletPersonale(this.id);
+            if(arr[0] == 0)
+            {
+                MessageBox.Show(arr[1]);
+            }
             this.Close();
         }
 
