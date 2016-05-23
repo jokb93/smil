@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace smil
 {
@@ -19,7 +20,7 @@ namespace smil
                 Personale personer = new Personale();
                 returnObj arr = personer.selectPersonale();
 
-                var reader = arr[1];
+                MySqlDataReader reader = arr[1].ExecuteReader();
 
                 while (reader.Read())
                 {
