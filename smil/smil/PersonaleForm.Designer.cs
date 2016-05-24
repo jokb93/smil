@@ -134,6 +134,7 @@
             // 
             // kvalifikationer
             // 
+            this.kvalifikationer.CheckOnClick = true;
             this.kvalifikationer.FormattingEnabled = true;
             this.kvalifikationer.Location = new System.Drawing.Point(150, 99);
             this.kvalifikationer.Name = "kvalifikationer";

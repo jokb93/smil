@@ -56,6 +56,7 @@ namespace smil
 
         void kvalifikationLukket(object sender, FormClosedEventArgs e)
         {
+
         }
 
         private void personaleDropdown_SelectedIndexChanged(object sender, EventArgs e)
@@ -87,10 +88,10 @@ namespace smil
                 kvali.Text = kvalreader["navn"].ToString();
                 returnObj res = new returnObj(kvalreader["type"]);
                 kvali.Value = res;
-                kvalifikationer.Items.Add(kvali);
+                int curindex = kvalifikationer.Items.Add(kvali);
                 if (Current.Contains(kvalreader["type"]))
                 {
-                    kvalifikationer.SetItemChecked(kvalifikationer.SelectedIndex, true);
+                    kvalifikationer.SetItemChecked(curindex, true);
                 }
             }
         }
@@ -124,7 +125,14 @@ namespace smil
 
         private void Gem_Click(object sender, EventArgs e)
         {
+            string navn = navnBox.Text;
+            string stilling = stillingBox.Text;
+            int id = (personaleDropdown.SelectedItem as ComboboxItem).Value[0];
+            Personale person = new Personale();
 
+            returnObj arr = person.retPersonale(navn, stilling, id);
+
+            MessageBox.Show(arr[1]);
         }
     }
 }
