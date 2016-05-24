@@ -17,10 +17,10 @@ namespace smil
 
             try
             {
-                if (Connect.query("DELETE FROM `kvalifikationer` WHERE `personaleid` = "+id))
+                if (Connect.query("DELETE FROM `SMIL`.`personale` WHERE id = " + id + ";"))
                 {
-                    
-                    if (Connect.query("DELETE FROM `SMIL`.`personale` WHERE id = " + id + ";"))
+
+                    if (Connect.query("DELETE FROM `SMIL`.`behandlingspersonale` WHERE personaleid = " + id + ";"))
                     {
 
 
@@ -33,16 +33,15 @@ namespace smil
                     else
                     {
                         returnObj Arr = new returnObj(0);  // type 0 er fejlmelding
-                        Arr.Add("Personalet har fremtidige behandlingstider");
+                        Arr.Add("Forbindelsesfejl");
 
                         return Arr;
                     }
 
-                }
-                else
+                } else
                 {
                     returnObj Arr = new returnObj(0);  // type 0 er fejlmelding
-                    Arr.Add("Personalet har fremtidige behandlingstider");
+                    Arr.Add("Forbindelsesfejl");
 
                     return Arr;
                 }
