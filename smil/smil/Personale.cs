@@ -17,15 +17,26 @@ namespace smil
 
             try
             {
-
-                if (Connect.query("DELETE FROM `SMIL`.`personale` WHERE id = " + id + ";"))
+                if (Connect.query("DELETE FROM `kvalifikationer` WHERE `personaleid` = "+id))
                 {
+                    
+                    if (Connect.query("DELETE FROM `SMIL`.`personale` WHERE id = " + id + ";"))
+                    {
 
 
-                    returnObj Arr = new returnObj(8);  // type 8 er slet personale
-                    Arr.Add("Personale er slettet");
+                        returnObj Arr = new returnObj(8);  // type 8 er slet personale
+                        Arr.Add("Personale er slettet");
 
-                    return Arr;
+                        return Arr;
+
+                    }
+                    else
+                    {
+                        returnObj Arr = new returnObj(0);  // type 0 er fejlmelding
+                        Arr.Add("Personalet har fremtidige behandlingstider");
+
+                        return Arr;
+                    }
 
                 }
                 else
@@ -143,6 +154,25 @@ namespace smil
                 return Arr;
             }
 
+        }
+
+        public returnObj delAllKval(int id)
+        {
+            if (Connect.query("DELETE FROM `kvalifikationer` WHERE `personaleid` = " + id))
+            {
+                
+                returnObj Arr = new returnObj(11);
+                Arr.Add("Kvalifikationer slettet");
+
+                return Arr;
+            } else
+            {
+
+                returnObj Arr = new returnObj(0);
+                Arr.Add("Forbindelses fejl");
+
+                return Arr;
+            }
         }
 
         public returnObj retPersonale(string navn, string titel, int id)
