@@ -109,6 +109,7 @@
             this.nytPersonale.TabIndex = 10;
             this.nytPersonale.Text = "Opret ny";
             this.nytPersonale.UseVisualStyleBackColor = true;
+            this.nytPersonale.Click += new System.EventHandler(this.nytPersonale_Click);
             // 
             // Gem
             // 

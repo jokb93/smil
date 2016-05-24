@@ -94,6 +94,7 @@ namespace smil
                     kvalifikationer.SetItemChecked(curindex, true);
                 }
             }
+            Connect.Con.Close();
         }
 
         private void slet_Click(object sender, EventArgs e)
@@ -132,7 +133,32 @@ namespace smil
 
             returnObj arr = person.retPersonale(navn, stilling, id);
 
-            MessageBox.Show(arr[1]);
+            person.delAllKval(id);
+           
+
+            foreach (object item in kvalifikationer.CheckedItems)
+            {
+                int kvalid = (item as ComboboxItem).Value[0];
+                person.opretKval(id, kvalid);
+            }
+
+            MessageBox.Show("Ændringer er gemt");
+            this.Close();
+        }
+
+        private void nytPersonale_Click(object sender, EventArgs e)
+        {
+            Personale person = new Personale();
+            person.NytPersonale("Nyt Personale", "Personaletitel");
+            int id = Convert.ToInt32(Connect.cmd.LastInsertedId);
+            ComboboxItem item = new ComboboxItem();
+            item.Text = "Nyt Personale";
+            returnObj res = new returnObj(id);
+            res.Add("Nyt Personale");
+            res.Add("Personaletitel");
+            item.Value = res;
+            int personaleid = personaleDropdown.Items.Add(item);
+            personaleDropdown.SelectedIndex = personaleid;
         }
     }
 }

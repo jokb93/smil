@@ -190,7 +190,7 @@ namespace smil
             else
             {
                 returnObj Arr = new returnObj(0);  
-                Arr.Add("UPDATE `SMIL`.`personale` SET `navn` = '" + navn + "', `titel` = '" + titel + "' WHERE `personale`.`id` = " + id);
+                Arr.Add("forbindelses fejl");
 
                 return Arr;
             }
