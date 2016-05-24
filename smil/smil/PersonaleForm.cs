@@ -81,14 +81,14 @@ namespace smil
             returnObj returnarr = kval.selectKval();
 
             MySqlDataReader kvalreader = returnarr[1].ExecuteReader();
-            while (reader.Read())
+            while (kvalreader.Read())
             {
                 ComboboxItem kvali = new ComboboxItem();
-                kvali.Text = reader["navn"].ToString();
-                returnObj res = new returnObj(reader["type"]);
+                kvali.Text = kvalreader["navn"].ToString();
+                returnObj res = new returnObj(kvalreader["type"]);
                 kvali.Value = res;
                 kvalifikationer.Items.Add(kvali);
-                if (Current.Contains(reader["type"]))
+                if (Current.Contains(kvalreader["type"]))
                 {
                     kvalifikationer.SetItemChecked(kvalifikationer.SelectedIndex, true);
                 }
@@ -98,7 +98,7 @@ namespace smil
         private void slet_Click(object sender, EventArgs e)
         {
             confirmPersonaleDelte form = new confirmPersonaleDelte(1);
-            form.Text = "Slet personale - Simon pedersen";
+            form.Text = "Slet personale - Simon Pedersen";
             form.FormClosed += new FormClosedEventHandler(deletePerson);
             form.Show();
         }
