@@ -35,11 +35,10 @@
             this.stillingBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Kvalifikationer = new System.Windows.Forms.ListBox();
-            this.addRemoveKval = new System.Windows.Forms.Button();
             this.nytPersonale = new System.Windows.Forms.Button();
             this.Gem = new System.Windows.Forms.Button();
             this.slet = new System.Windows.Forms.Button();
+            this.kvalifikationer = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // personaleDropdown
@@ -102,27 +101,6 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Kvalifikationer:";
             // 
-            // Kvalifikationer
-            // 
-            this.Kvalifikationer.FormattingEnabled = true;
-            this.Kvalifikationer.ItemHeight = 16;
-            this.Kvalifikationer.Location = new System.Drawing.Point(150, 99);
-            this.Kvalifikationer.Name = "Kvalifikationer";
-            this.Kvalifikationer.Size = new System.Drawing.Size(407, 100);
-            this.Kvalifikationer.Sorted = true;
-            this.Kvalifikationer.TabIndex = 8;
-            this.Kvalifikationer.SelectedIndexChanged += new System.EventHandler(this.Kvalifikationer_SelectedIndexChanged);
-            // 
-            // addRemoveKval
-            // 
-            this.addRemoveKval.Location = new System.Drawing.Point(13, 122);
-            this.addRemoveKval.Name = "addRemoveKval";
-            this.addRemoveKval.Size = new System.Drawing.Size(111, 30);
-            this.addRemoveKval.TabIndex = 9;
-            this.addRemoveKval.Text = "Tilføj/Fjern";
-            this.addRemoveKval.UseVisualStyleBackColor = true;
-            this.addRemoveKval.Click += new System.EventHandler(this.addRemoveKval_Click);
-            // 
             // nytPersonale
             // 
             this.nytPersonale.Location = new System.Drawing.Point(478, 10);
@@ -141,6 +119,7 @@
             this.Gem.TabIndex = 11;
             this.Gem.Text = "Gem";
             this.Gem.UseVisualStyleBackColor = true;
+            this.Gem.Click += new System.EventHandler(this.Gem_Click);
             // 
             // slet
             // 
@@ -153,16 +132,24 @@
             this.slet.UseVisualStyleBackColor = true;
             this.slet.Click += new System.EventHandler(this.slet_Click);
             // 
+            // kvalifikationer
+            // 
+            this.kvalifikationer.FormattingEnabled = true;
+            this.kvalifikationer.Location = new System.Drawing.Point(150, 99);
+            this.kvalifikationer.Name = "kvalifikationer";
+            this.kvalifikationer.Size = new System.Drawing.Size(406, 89);
+            this.kvalifikationer.TabIndex = 13;
+            this.kvalifikationer.SelectedIndexChanged += new System.EventHandler(this.Kvalifikationer_SelectedIndexChanged_1);
+            // 
             // PersonaleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 252);
+            this.Controls.Add(this.kvalifikationer);
             this.Controls.Add(this.slet);
             this.Controls.Add(this.Gem);
             this.Controls.Add(this.nytPersonale);
-            this.Controls.Add(this.addRemoveKval);
-            this.Controls.Add(this.Kvalifikationer);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.stillingBox);
             this.Controls.Add(this.label3);
@@ -190,10 +177,9 @@
         private System.Windows.Forms.TextBox stillingBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox Kvalifikationer;
-        private System.Windows.Forms.Button addRemoveKval;
         private System.Windows.Forms.Button nytPersonale;
         private System.Windows.Forms.Button Gem;
         private System.Windows.Forms.Button slet;
+        private System.Windows.Forms.CheckedListBox kvalifikationer;
     }
 }

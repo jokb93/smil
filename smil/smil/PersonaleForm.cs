@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Collections;
 
 namespace smil
 {
@@ -67,13 +68,31 @@ namespace smil
             Personale member = new Personale();
             returnObj MemArr = member.selectKval(id);
             MySqlDataReader reader = MemArr[1].ExecuteReader();
-            Kvalifikationer.Items.Clear();
+            kvalifikationer.Items.Clear();
+            ArrayList Current = new ArrayList();
             while (reader.Read())
             {
-                Kvalifikationer.Items.Add(reader["navn"]);
+                Current.Add(reader["type"]);
             }
             Connect.Con.Close();
 
+            Kvalifikationer kval = new Kvalifikationer();
+            
+            returnObj returnarr = kval.selectKval();
+
+            MySqlDataReader kvalreader = returnarr[1].ExecuteReader();
+            while (reader.Read())
+            {
+                ComboboxItem kvali = new ComboboxItem();
+                kvali.Text = reader["navn"].ToString();
+                returnObj res = new returnObj(reader["type"]);
+                kvali.Value = res;
+                kvalifikationer.Items.Add(kvali);
+                if (Current.Contains(reader["type"]))
+                {
+                    kvalifikationer.SetItemChecked(kvalifikationer.SelectedIndex, true);
+                }
+            }
         }
 
         private void slet_Click(object sender, EventArgs e)
@@ -94,6 +113,16 @@ namespace smil
         }
 
         private void Kvalifikationer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Kvalifikationer_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Gem_Click(object sender, EventArgs e)
         {
 
         }
