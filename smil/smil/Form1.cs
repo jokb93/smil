@@ -36,6 +36,7 @@ namespace smil
                 tid.Text = time.ToString("HH:mm");
                 tidarr = new returnObj(0);
                 tidarr.Add(0);
+                tidarr.Add(time.ToString("HH:mm"));
                 tidarr.Add("Patient");
                 tidarr.Add("Læge");
                 tidarr.Add("lokale");
@@ -182,7 +183,11 @@ namespace smil
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            foreach(object item in Tider.SelectedItems)
+            {
+                string time = (item as ComboboxItem).Value[2];
+                MessageBox.Show(time);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -224,7 +229,7 @@ namespace smil
 
         private void Tider_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
     }
 }
