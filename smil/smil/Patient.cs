@@ -14,7 +14,7 @@ namespace smil
             try
             {
 
-                if (Connect.query("INSERT INTO `SMIL`.`patient` (`id`) VALUES (NULL);"))
+                if (Connect.query("INSERT INTO `SMIL`.`patient` (`id`, `tlf`, `adresse`, `navn`, `post`) VALUES (NULL, '00000000', 'ny vej 1', 'Ny patient', '0000');"))
                 {
 
 
@@ -74,6 +74,47 @@ namespace smil
                 return Arr;
             }
 
+        }
+
+        public returnObj selectPatient()
+        {
+            if (Connect.select("SELECT * FROM `SMIL`.`patient`"))
+            {
+
+
+                returnObj Arr = new returnObj(12);
+                Arr.Add(Connect.cmd);
+                return Arr;
+
+            }
+            else
+            {
+                returnObj Arr = new returnObj(0);
+                Arr.Add("forbindelses fejl");
+
+                return Arr;
+            }
+        }
+
+        public returnObj retPatient(string navn, string tlf, string adresse, int post, int id)
+        {
+            if (Connect.query("UPDATE `SMIL`.`patient` SET `tlf` = '"+tlf+"', `adresse` = '"+adresse+"', `navn` = '"+navn+"', `post` = '"+post+"' WHERE `patient`.`id` = "+id+";"))
+            {
+
+
+                returnObj Arr = new returnObj(11);
+                Arr.Add("Patient rettet");
+
+                return Arr;
+
+            }
+            else
+            {
+                returnObj Arr = new returnObj(0);
+                Arr.Add("Fejl i forbindelse");
+
+                return Arr;
+            }
         }
 
     }

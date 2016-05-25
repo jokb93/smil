@@ -143,6 +143,67 @@ namespace smil
             }
 
         }
+
+        public returnObj selectLokale()
+        {
+            if (Connect.select("SELECT * FROM `SMIL`.`lokale`"))
+            {
+
+
+                returnObj Arr = new returnObj(12);
+                Arr.Add(Connect.cmd);
+                return Arr;
+
+            }
+            else
+            {
+                returnObj Arr = new returnObj(0);
+                Arr.Add("forbindelses fejl");
+
+                return Arr;
+            }
+        }
+
+        public returnObj selectKval(int id)
+        {
+            if (Connect.select("SELECT * FROM `lokaleKvalifikationer` INNER JOIN `kvalifikationsKatalog` ON `lokaleKvalifikationer` .`type`=`kvalifikationsKatalog`.`type` WHERE `lokaleKvalifikationer`.`lokaleid` = " + id.ToString()))
+            {
+
+
+                returnObj Arr = new returnObj(12);
+                Arr.Add(Connect.cmd);
+                return Arr;
+
+            }
+            else
+            {
+                returnObj Arr = new returnObj(0);
+                Arr.Add("forbindelses fejl");
+
+                return Arr;
+            }
+        }
+
+        public returnObj delAllKval(int id)
+        {
+            if (Connect.query("DELETE FROM `lokaleKvalifikationer` WHERE `lokaleid` = " + id))
+            {
+
+                returnObj Arr = new returnObj(11);
+                Arr.Add("Kvalifikationer slettet");
+
+                return Arr;
+            }
+            else
+            {
+
+                returnObj Arr = new returnObj(0);
+                Arr.Add("Forbindelses fejl");
+
+                return Arr;
+            }
+        }
+
     }
    // public returnObj Nytlokale()
 }

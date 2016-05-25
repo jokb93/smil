@@ -10,30 +10,29 @@ using System.Windows.Forms;
 
 namespace smil
 {
-    public partial class confirmPersonaleDelte : Form
+    public partial class confirmPatientDelete : Form
     {
-
-        int id;
-
-        public confirmPersonaleDelte(int id)
+        public int id;
+        public confirmPatientDelete(int id)
         {
             this.id = id;
             InitializeComponent();
         }
 
-        private void confirmPersonaleDelte_Load(object sender, EventArgs e)
+        private void confirmPatientDelete_Load(object sender, EventArgs e)
         {
 
         }
 
         private void ja_Click(object sender, EventArgs e)
         {
-            Personale personale = new Personale();
-            returnObj arr = personale.SletPersonale(this.id);
-            if(arr[0] == 0)
+            Patient patient = new Patient();
+            returnObj arr = patient.sletPatient(this.id);
+            if (arr[0] == 0)
             {
                 MessageBox.Show(arr[1]);
-            } else
+            }
+            else
             {
                 MessageBox.Show(arr[1]);
             }

@@ -99,14 +99,17 @@ namespace smil
 
         private void slet_Click(object sender, EventArgs e)
         {
-            confirmPersonaleDelte form = new confirmPersonaleDelte(1);
-            form.Text = "Slet personale - Simon Pedersen";
+            int id = (personaleDropdown.SelectedItem as ComboboxItem).Value[0];
+            confirmPersonaleDelte form = new confirmPersonaleDelte(id);
+            string navn = (personaleDropdown.SelectedItem as ComboboxItem).Value[1];
+            form.Text = "Slet personale - "+ navn;
             form.FormClosed += new FormClosedEventHandler(deletePerson);
             form.Show();
         }
 
         void deletePerson(object sender, FormClosedEventArgs e)
         {
+            this.Close();
         }
 
         private void navn_TextChanged(object sender, EventArgs e)
