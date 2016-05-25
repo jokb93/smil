@@ -101,6 +101,12 @@
     <Compile Include="LokaleForm.Designer.cs">
       <DependentUpon>LokaleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OpretTid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpretTid.Designer.cs">
+      <DependentUpon>OpretTid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patient.cs" />
     <Compile Include="Personale.cs" />
     <Compile Include="PersonaleForm.cs">

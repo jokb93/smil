@@ -21,6 +21,31 @@ namespace smil
             arbejder.Dock = DockStyle.Fill;
 
 
+            //TIDER FILL
+
+            ComboboxItem tid;
+            returnObj tidarr;
+            DateTime time = timePicker.Value;
+            TimeSpan ts = new TimeSpan(7, 30, 0);
+            time = time.Date + ts;
+
+            for (int i = 0; i < 16; i++)
+            {
+                time = time.AddMinutes(30.00);
+                tid = new ComboboxItem();
+                tid.Text = time.ToString("HH:mm");
+                tidarr = new returnObj(0);
+                tidarr.Add(0);
+                tidarr.Add("Patient");
+                tidarr.Add("Læge");
+                tidarr.Add("lokale");
+                tid.Value = tidarr;
+                Tider.Items.Add(tid);
+            }
+
+            //TIDER FILL END
+
+
             ComboboxItem front = new ComboboxItem();
             front.Text = "Ingen valgt";
             returnObj frontres = new returnObj(0);
@@ -195,6 +220,11 @@ namespace smil
             KvalifikationsForm form = new KvalifikationsForm();
             form.FormClosed += new FormClosedEventHandler(ChildFormClosed);
             form.Show();
+        }
+
+        private void Tider_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
