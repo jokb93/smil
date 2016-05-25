@@ -18,23 +18,34 @@ namespace smil
             try
             {
 
-                if (Connect.query("DELETE FROM `SMIL`.`personale` WHERE id = " + id + ";"))
+                if (Connect.query("DELETE FROM `SMIL`.`behandlingspersonale` WHERE `behandlingspersonale`.`behandlingsid` = " + id))
                 {
 
+                    if (Connect.query("DELETE FROM `SMIL`.`personale` WHERE `personale`.`id` = " + id))
+                    {
 
-                    returnObj Arr = new returnObj(8);  // type 8 er slet personale
-                    Arr.Add("Personale er slettet");
 
-                    return Arr;
+                        returnObj Arr = new returnObj(8);  // type 8 er slet personale
+                        Arr.Add("Personale slettet");
 
-                }
-                else
+                        return Arr;
+
+                    }
+                    else
+                    {
+                        returnObj Arr = new returnObj(0);  // type 0 er fejlmelding
+                        Arr.Add("Personalet har fremtidige behandlingstider");
+
+                        return Arr;
+                    }
+                } else
                 {
                     returnObj Arr = new returnObj(0);  // type 0 er fejlmelding
                     Arr.Add("Personalet har fremtidige behandlingstider");
 
                     return Arr;
-                }
+                } 
+                    
             }
             catch
             {
@@ -57,6 +68,7 @@ namespace smil
 
                     returnObj Arr = new returnObj(1);  // type 1 er opret personale
                     Arr.Add("Personale er oprettet");
+
 
                     return Arr;
 
@@ -87,7 +99,7 @@ namespace smil
                 {
 
 
-                    returnObj Arr = new returnObj(11);  // type 2 er opret lokale
+                    returnObj Arr = new returnObj(11);  
                     Arr.Add("Kvalifikation tilføjet");
 
                     return Arr;
@@ -95,7 +107,7 @@ namespace smil
                 }
                 else
                 {
-                    returnObj Arr = new returnObj(0);  // type 2 er opret lokale
+                    returnObj Arr = new returnObj(0);  
                     Arr.Add("forbindelses fejl");
 
                     return Arr;
@@ -121,7 +133,7 @@ namespace smil
                 {
 
 
-                    returnObj Arr = new returnObj(11);  // type 2 er opret lokale
+                    returnObj Arr = new returnObj(11);  
                     Arr.Add("Kvalifikation slettet");
 
                     return Arr;
@@ -129,7 +141,7 @@ namespace smil
                 }
                 else
                 {
-                    returnObj Arr = new returnObj(0);  // type 2 er opret lokale
+                    returnObj Arr = new returnObj(0);  
                     Arr.Add("forbindelses fejl");
 
                     return Arr;
@@ -145,13 +157,32 @@ namespace smil
 
         }
 
+        public returnObj delAllKval(int id)
+        {
+            if (Connect.query("DELETE FROM `kvalifikationer` WHERE `personaleid` = " + id))
+            {
+                
+                returnObj Arr = new returnObj(11);
+                Arr.Add("Kvalifikationer slettet");
+
+                return Arr;
+            } else
+            {
+
+                returnObj Arr = new returnObj(0);
+                Arr.Add("Forbindelses fejl");
+
+                return Arr;
+            }
+        }
+
         public returnObj retPersonale(string navn, string titel, int id)
         {
             if (Connect.query("UPDATE `SMIL`.`personale` SET `navn` = '" + navn + "', `titel` = '" + titel + "' WHERE `personale`.`id` = " + id))
             {
 
 
-                returnObj Arr = new returnObj(11);  // type 2 er opret lokale
+                returnObj Arr = new returnObj(11);  
                 Arr.Add("Personale rettet");
 
                 return Arr;
@@ -159,7 +190,47 @@ namespace smil
             }
             else
             {
-                returnObj Arr = new returnObj(0);  // type 2 er opret lokale
+                returnObj Arr = new returnObj(0);  
+                Arr.Add("UPDATE `SMIL`.`personale` SET `navn` = '" + navn + "', `titel` = '" + titel + "' WHERE `personale`.`id` = " + id);
+
+                return Arr;
+            }
+        }
+
+        public returnObj selectPersonale()
+        {
+            if (Connect.select("SELECT * FROM `SMIL`.`personale`"))
+            {
+
+
+                returnObj Arr = new returnObj(12);
+                Arr.Add(Connect.cmd);
+                return Arr;
+
+            }
+            else
+            {
+                returnObj Arr = new returnObj(0);  
+                Arr.Add("forbindelses fejl");
+
+                return Arr;
+            }
+        }
+
+        public returnObj selectKval(int id)
+        {
+            if (Connect.select("SELECT * FROM `kvalifikationer` INNER JOIN `kvalifikationsKatalog` ON `kvalifikationer` .`type`=`kvalifikationsKatalog`.`type` WHERE `kvalifikationer`.`personaleid` = " + id.ToString()))
+            {
+
+
+                returnObj Arr = new returnObj(12);
+                Arr.Add(Connect.cmd);
+                return Arr;
+
+            }
+            else
+            {
+                returnObj Arr = new returnObj(0);
                 Arr.Add("forbindelses fejl");
 
                 return Arr;

@@ -10,9 +10,9 @@ namespace smil
     class Behandling
     {
 
-        public returnObj opretTid(int type, int patientid, DateTime date, int lokaleId, int personaleId)
+        public returnObj opretTid(int type, int patientid, DateTime date, int lokaleId, int personaleId, int min)
         {
-            if (Connect.query("INSERT INTO `SMIL`.`behandling` (`id`, `type`, `patientid`, `dato`) VALUES (NULL, '" + type + "', '" + patientid + "', '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "');"))
+            if (Connect.query("INSERT INTO `SMIL`.`behandling` (`id`, `type`, `patientid`, `dato`, `end`) VALUES (NULL, '" + type + "', '" + patientid + "', '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + min + "');"))
             {
                 int behandlingsId = Connect.insertID();
                 if (Connect.query("INSERT INTO `SMIL`.`behandlingslokale` (`behandlingid`, `lokaleid`) VALUES ('"+ behandlingsId + "', '"+ lokaleId+ "');"))
@@ -50,9 +50,9 @@ namespace smil
             }
         }
 
-        public returnObj rediger(int id, int type, int patientid, DateTime date, int lokaleId, int personaleId)
+        public returnObj rediger(int id, int type, int patientid, DateTime date, int lokaleId, int personaleId, int min)
         {
-            if (Connect.query("UPDATE `SMIL`.`behandling` SET `type` = '" + type + "', `patientid` = '" + patientid + "', `dato` = '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE `behandling`.`id` = " + id + ""))
+            if (Connect.query("UPDATE `SMIL`.`behandling` SET `type` = '" + type + "', `patientid` = '" + patientid + "', `end` = '" + min + "', `dato` = '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE `behandling`.`id` = " + id + ""))
             {
                 int behandlingsId = Connect.insertID();
                 if (Connect.query("UPDATE `SMIL`.`behandlingslokale` SET `lokaleid` = '"+ lokaleId + "' WHERE `behandlingslokale`.`behandlingid` = " + id + ""))
