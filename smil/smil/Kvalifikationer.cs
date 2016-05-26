@@ -65,9 +65,9 @@ namespace smil
             }
         }
 
-        public returnObj retKvalifikation(string navn, int id)
+        public returnObj retKvalifikation(string navn, decimal pris, int id)
         {
-            if (Connect.query("UPDATE `SMIL`.`kvalifikationsKatalog` SET `navn` = '" + navn + "' WHERE `kvalifikationsKatalog`.`type` = " + id))
+            if (Connect.query("UPDATE `SMIL`.`kvalifikationsKatalog` SET `navn` = '" + navn + "', `pris` = '" + pris + "' WHERE `kvalifikationsKatalog`.`type` = " + id))
             {
 
 

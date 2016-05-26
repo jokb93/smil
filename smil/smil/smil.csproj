@@ -101,6 +101,12 @@
     <Compile Include="LokaleForm.Designer.cs">
       <DependentUpon>LokaleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="nyTid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nyTid.Designer.cs">
+      <DependentUpon>nyTid.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpretTid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LokaleForm.resx">
       <DependentUpon>LokaleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nyTid.resx">
+      <DependentUpon>nyTid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PersonaleForm.resx">
       <DependentUpon>PersonaleForm.cs</DependentUpon>

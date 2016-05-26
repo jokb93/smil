@@ -183,11 +183,10 @@ namespace smil
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            foreach(object item in Tider.SelectedItems)
-            {
-                string time = (item as ComboboxItem).Value[2];
-                MessageBox.Show(time);
-            }
+            arbejder.Visible = true;
+            nyTid form = new nyTid();
+            form.FormClosed += new FormClosedEventHandler(ChildFormClosed);
+            form.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -230,6 +229,11 @@ namespace smil
         private void Tider_SelectedIndexChanged(object sender, EventArgs e)
         {
            
+        }
+
+        private void PersonaleDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

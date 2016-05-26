@@ -10,9 +10,9 @@ namespace smil
     class Behandling
     {
 
-        public returnObj opretTid(int type, int patientid, DateTime date, int lokaleId, int personaleId, int min)
+        public returnObj opretTid(int patientid, string date, int lokaleId, int personaleId, int start, int slut)
         {
-            if (Connect.query("INSERT INTO `SMIL`.`behandling` (`id`, `type`, `patientid`, `dato`, `end`) VALUES (NULL, '" + type + "', '" + patientid + "', '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + min + "');"))
+            if (Connect.query("INSERT INTO `SMIL`.`behandling` (`patientid`, `dato`, `start`, `slut`) VALUES ('" + patientid + "', '" + date + "', '" + start + "', '" + slut + "');"))
             {
                 int behandlingsId = Connect.insertID();
                 if (Connect.query("INSERT INTO `SMIL`.`behandlingslokale` (`behandlingid`, `lokaleid`) VALUES ('"+ behandlingsId + "', '"+ lokaleId+ "');"))

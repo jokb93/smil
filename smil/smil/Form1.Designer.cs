@@ -101,6 +101,7 @@
             this.PersonaleDropdown.Name = "PersonaleDropdown";
             this.PersonaleDropdown.Size = new System.Drawing.Size(200, 21);
             this.PersonaleDropdown.TabIndex = 6;
+            this.PersonaleDropdown.SelectedIndexChanged += new System.EventHandler(this.PersonaleDropdown_SelectedIndexChanged);
             // 
             // LokaleDropdown
             // 
@@ -214,8 +215,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 457);
-            this.Controls.Add(this.Tider);
             this.Controls.Add(this.arbejder);
+            this.Controls.Add(this.Tider);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.lokaleknap);
             this.Controls.Add(this.PatientDropdown);
