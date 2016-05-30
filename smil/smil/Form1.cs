@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace smil
 {
 
-    public partial class Form1 : Form
+    public partial class print : Form
     {
-        public Form1()
+        public print()
         {
             InitializeComponent();
             arbejder.Visible = false;
@@ -730,6 +731,48 @@ namespace smil
         private void Tider_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int personale = (PersonaleDropdown.SelectedItem as ComboboxItem).Value[0];
+            string personalenavn = (PersonaleDropdown.SelectedItem as ComboboxItem).Value[1];
+            string dato = timePicker.Text;
+
+            if (personale == 0)
+            {
+                MessageBox.Show("Vælg personale for at udskrive oversigt");
+            }
+            else
+            {
+                string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);//fundet på gooooooooogle
+                string path = @"" + desktop + "/Oversigt - " + personalenavn + ".txt";
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine("Oversigt over tider " + dato + " for " + personalenavn);
+                    sw.WriteLine();
+                    foreach (ComboboxItem item in Tider.Items)
+                    {
+                        int id = item.Value[0];
+                        if (id > 0)
+                        {
+                            Behandling behandling = new Behandling();
+                            returnObj res = behandling.getSpecific(id);
+                            MySqlDataReader reader = res[1].ExecuteReader();
+                            reader.Read();
+                            string lokale = reader["lokale"].ToString();
+                            string behandlingsnavn = reader["behandlingsnavn"].ToString();
+                            string text = item.Text;
+                            sw.WriteLine(item + " - " + behandlingsnavn + " i lokale: " + lokale);
+                        } else
+                        {
+                            sw.WriteLine(item);
+                        }
+                        Connect.Con.Close();
+                    }
+                }
+                MessageBox.Show(personalenavn+"'s dagsplan er udskrevet til skrivebordet");
+            }
         }
     }
 }

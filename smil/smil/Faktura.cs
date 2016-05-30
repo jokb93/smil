@@ -28,17 +28,17 @@ namespace smil
                     string b2 = kundeinfo[1].PadRight(51);
                     string b3 = kundeinfo[2].PadRight(51);
                     sw.Write(b);
-                    sw.WriteLine("Kundenr:    " + kundeinfo[4]);
+                    sw.WriteLine("Kundenr:    " + kundeinfo[3]);
                     sw.Write(b2);
-                    sw.WriteLine("Fakturanr:  " + kundeinfo[5]);
+                    sw.WriteLine("Fakturanr:  " + kundeinfo[4]);
                     sw.Write(b3);
-                    sw.WriteLine("Dato:       " + kundeinfo[6]);
+                    sw.WriteLine("Dato:       " + kundeinfo[5]);
                     sw.WriteLine("");
                     sw.WriteLine("");
                     sw.WriteLine("-------------------------------------------------------------------------");
                     sw.WriteLine("Behandling                                                    Pris       ");
                     sw.WriteLine("-------------------------------------------------------------------------");
-                    sw.WriteLine(behandling.PadRight(61));
+                    sw.Write(behandling.PadRight(61));
                     if (pris < 10)
                     {
                         sw.WriteLine("    " + pris);

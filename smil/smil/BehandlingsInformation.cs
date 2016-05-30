@@ -42,7 +42,7 @@ namespace smil
             pris = Convert.ToInt32(reader["pris"]);
             post = Convert.ToInt32(reader["post"]);
             adresse = reader["adresse"].ToString();
-            navn = reader["navn"].ToString();
+            navn = reader["patient"].ToString();
             kundenr = Convert.ToInt32(reader["kundenr"]);
             fakturanr = behandlingsId;
             this.behandling = reader["behandlingsnavn"].ToString();
@@ -61,16 +61,25 @@ namespace smil
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Faktura faktura = new Faktura();
+            try
+            {
+                Faktura faktura = new Faktura();
 
-            returnObj kundeArr = new returnObj(navn);
-            kundeArr.Add(adresse);
-            kundeArr.Add(post.ToString());
-            kundeArr.Add(kundenr.ToString());
-            kundeArr.Add(behandlingsId.ToString());
-            kundeArr.Add(date);
+                returnObj kundeArr = new returnObj(navn);
+                kundeArr.Add(adresse);
+                kundeArr.Add(post.ToString());
+                kundeArr.Add(kundenr.ToString());
+                kundeArr.Add(behandlingsId.ToString());
+                kundeArr.Add(date);
 
-            faktura.Fakt(pris,behandling, kundeArr);
+                faktura.Fakt(pris, behandling, kundeArr);
+                MessageBox.Show("Faktura udskrevet til skrivebord");
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Faktura kunne ikke udskrives, prøv igen!");
+            }
         }
     }
 }
