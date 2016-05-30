@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 using MySql.Data.MySqlClient;
 
 namespace smil
@@ -173,6 +174,121 @@ namespace smil
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+            string person;
+            string patientid;
+            string lokaleid;
+            int personale = (PersonaleDropdown.SelectedItem as ComboboxItem).Value[0];
+            if (personale == 0)
+            {
+                person = "";
+            }
+            else
+            {
+                person = personale.ToString();
+            }
+            int patient = (PatientDropdown.SelectedItem as ComboboxItem).Value[0];
+            if (patient == 0)
+            {
+                patientid = "";
+            }
+            else
+            {
+                patientid = patient.ToString();
+            }
+            int lokale = (LokaleDropdown.SelectedItem as ComboboxItem).Value[0];
+            if (lokale == 0)
+            {
+                lokaleid = "";
+            }
+            else
+            {
+                lokaleid = lokale.ToString();
+            }
+            string dato = timePicker.Text;
+            Behandling behandling = new Behandling();
+            returnObj res = behandling.getAll(person, lokaleid, patientid, dato);
+            MySqlDataReader reader = res[1].ExecuteReader();
+            ArrayList list = new ArrayList();
+            while (reader.Read())
+            {
+                returnObj newlist = new returnObj(reader["navn"].ToString());
+                newlist.Add(Convert.ToInt32(reader["behandlingsid"]));
+                newlist.Add(Convert.ToInt32(reader["start"]));
+                newlist.Add(Convert.ToInt32(reader["slut"]));
+                list.Add(newlist);
+            }
+
+            ComboboxItem tid;
+            returnObj tidarr;
+            DateTime time = timePicker.Value;
+            TimeSpan ts = new TimeSpan(7, 30, 0);
+            time = time.Date + ts;
+            Tider.Items.Clear();
+            bool isgoing = false;
+            int x = 0;
+            for (int i = 0; i < 16; i++)
+            {
+                time = time.AddMinutes(30.00);
+                try
+                {
+                    returnObj thisList = (returnObj)list[x];
+
+                    if (thisList[2] == i)
+                    {
+                        tid = new ComboboxItem();
+                        tid.Text = time.ToString("HH:mm") + " - " + thisList[0];
+                        tidarr = new returnObj(thisList[1]);
+                        tidarr.Add(time.ToString("HH:mm"));
+                        tid.Value = tidarr;
+                        isgoing = true;
+
+                    }
+                    else if (thisList[3] == i)
+                    {
+                        tid = new ComboboxItem();
+                        tid.Text = time.ToString("HH:mm") + " - " + thisList[0];
+                        tidarr = new returnObj(thisList[1]);
+                        tidarr.Add(time.ToString("HH:mm"));
+                        tid.Value = tidarr;
+                        isgoing = false;
+                        x++;
+                    }
+                    else
+                    {
+                        if (isgoing)
+                        {
+                            tid = new ComboboxItem();
+                            tid.Text = time.ToString("HH:mm") + " - " + thisList[0];
+                            tidarr = new returnObj(thisList[1]);
+                            tidarr.Add(time.ToString("HH:mm"));
+                            tid.Value = tidarr;
+                        }
+                        else
+                        {
+                            tid = new ComboboxItem();
+                            tid.Text = time.ToString("HH:mm");
+                            tidarr = new returnObj(0);
+                            tidarr.Add(time.ToString("HH:mm"));
+                            tid.Value = tidarr;
+                        }
+                    }
+
+
+                    Tider.Items.Add(tid);
+                }
+                catch
+                {
+
+                    tid = new ComboboxItem();
+                    tid.Text = time.ToString("HH:mm");
+                    tidarr = new returnObj(0);
+                    tidarr.Add(time.ToString("HH:mm"));
+                    tid.Value = tidarr;
+
+
+                    Tider.Items.Add(tid);
+                }
+            }
 
         }
 
@@ -226,12 +342,378 @@ namespace smil
             form.Show();
         }
 
-        private void Tider_SelectedIndexChanged(object sender, EventArgs e)
+        private void Tider_MouseDoubleClick(object sender, EventArgs e)
         {
-           
+            try
+            {
+                int behandlingsId = (Tider.SelectedItem as ComboboxItem).Value[0];
+
+                MessageBox.Show(behandlingsId.ToString());
+            }
+            catch
+            {
+
+            }
         }
 
         private void PersonaleDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string person;
+            string patientid;
+            string lokaleid;
+            int personale = (PersonaleDropdown.SelectedItem as ComboboxItem).Value[0];
+            if(personale == 0)
+            {
+                person = "";
+            } else
+            {
+                person = personale.ToString();
+            }
+            int patient = (PatientDropdown.SelectedItem as ComboboxItem).Value[0];
+            if (patient == 0)
+            {
+                patientid = "";
+            }
+            else
+            {
+                patientid = patient.ToString();
+            }
+            int lokale = (LokaleDropdown.SelectedItem as ComboboxItem).Value[0];
+            if (lokale == 0)
+            {
+                lokaleid = "";
+            }
+            else
+            {
+                lokaleid = lokale.ToString();
+            }
+            string dato = timePicker.Text;
+            Behandling behandling = new Behandling();
+            returnObj res = behandling.getAll(person, lokaleid, patientid, dato);
+            MySqlDataReader reader = res[1].ExecuteReader();
+            ArrayList list = new ArrayList();
+            while (reader.Read())
+            {
+                returnObj newlist = new returnObj(reader["navn"].ToString());
+                newlist.Add(Convert.ToInt32(reader["behandlingsid"]));
+                newlist.Add(Convert.ToInt32(reader["start"]));
+                newlist.Add(Convert.ToInt32(reader["slut"]));
+                list.Add(newlist);
+            }
+
+            ComboboxItem tid;
+            returnObj tidarr;
+            DateTime time = timePicker.Value;
+            TimeSpan ts = new TimeSpan(7, 30, 0);
+            time = time.Date + ts;
+            Tider.Items.Clear();
+            bool isgoing = false;
+            int x = 0;
+            for (int i = 0; i < 16; i++)
+            {
+                time = time.AddMinutes(30.00);
+                try
+                {
+                    returnObj thisList = (returnObj)list[x];
+
+                    if (thisList[2] == i)
+                    {
+                        tid = new ComboboxItem();
+                        tid.Text = time.ToString("HH:mm") + " - " + thisList[0];
+                        tidarr = new returnObj(thisList[1]);
+                        tidarr.Add(time.ToString("HH:mm"));
+                        tid.Value = tidarr;
+                        isgoing = true;
+
+                    } else if (thisList[3] == i)
+                    {
+                        tid = new ComboboxItem();
+                        tid.Text = time.ToString("HH:mm") + " - " + thisList[0];
+                        tidarr = new returnObj(thisList[1]);
+                        tidarr.Add(time.ToString("HH:mm"));
+                        tid.Value = tidarr;
+                        isgoing = false;
+                        x++;
+                    }
+                    else
+                    {
+                        if (isgoing)
+                        {
+                            tid = new ComboboxItem();
+                            tid.Text = time.ToString("HH:mm") + " - " + thisList[0];
+                            tidarr = new returnObj(thisList[1]);
+                            tidarr.Add(time.ToString("HH:mm"));
+                            tid.Value = tidarr;
+                        }
+                        else
+                        {
+                            tid = new ComboboxItem();
+                            tid.Text = time.ToString("HH:mm");
+                            tidarr = new returnObj(0);
+                            tidarr.Add(time.ToString("HH:mm"));
+                            tid.Value = tidarr;
+                        }
+                    }
+
+
+                    Tider.Items.Add(tid);
+                }
+                catch {
+                    
+                    tid = new ComboboxItem();
+                    tid.Text = time.ToString("HH:mm");
+                    tidarr = new returnObj(0);
+                    tidarr.Add(time.ToString("HH:mm"));
+                    tid.Value = tidarr;
+
+
+                    Tider.Items.Add(tid);
+                }
+            }
+
+        }
+
+        private void LokaleDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string person;
+            string patientid;
+            string lokaleid;
+            int personale = (PersonaleDropdown.SelectedItem as ComboboxItem).Value[0];
+            if (personale == 0)
+            {
+                person = "";
+            }
+            else
+            {
+                person = personale.ToString();
+            }
+            int patient = (PatientDropdown.SelectedItem as ComboboxItem).Value[0];
+            if (patient == 0)
+            {
+                patientid = "";
+            }
+            else
+            {
+                patientid = patient.ToString();
+            }
+            int lokale = (LokaleDropdown.SelectedItem as ComboboxItem).Value[0];
+            if (lokale == 0)
+            {
+                lokaleid = "";
+            }
+            else
+            {
+                lokaleid = lokale.ToString();
+            }
+            string dato = timePicker.Text;
+            Behandling behandling = new Behandling();
+            returnObj res = behandling.getAll(person, lokaleid, patientid, dato);
+            MySqlDataReader reader = res[1].ExecuteReader();
+            ArrayList list = new ArrayList();
+            while (reader.Read())
+            {
+                returnObj newlist = new returnObj(reader["navn"].ToString());
+                newlist.Add(Convert.ToInt32(reader["behandlingsid"]));
+                newlist.Add(Convert.ToInt32(reader["start"]));
+                newlist.Add(Convert.ToInt32(reader["slut"]));
+                list.Add(newlist);
+            }
+
+            ComboboxItem tid;
+            returnObj tidarr;
+            DateTime time = timePicker.Value;
+            TimeSpan ts = new TimeSpan(7, 30, 0);
+            time = time.Date + ts;
+            Tider.Items.Clear();
+            bool isgoing = false;
+            int x = 0;
+            for (int i = 0; i < 16; i++)
+            {
+                time = time.AddMinutes(30.00);
+                try
+                {
+                    returnObj thisList = (returnObj)list[x];
+
+                    if (thisList[2] == i)
+                    {
+                        tid = new ComboboxItem();
+                        tid.Text = time.ToString("HH:mm") + " - " + thisList[0];
+                        tidarr = new returnObj(thisList[1]);
+                        tidarr.Add(time.ToString("HH:mm"));
+                        tid.Value = tidarr;
+                        isgoing = true;
+
+                    }
+                    else if (thisList[3] == i)
+                    {
+                        tid = new ComboboxItem();
+                        tid.Text = time.ToString("HH:mm") + " - " + thisList[0];
+                        tidarr = new returnObj(thisList[1]);
+                        tidarr.Add(time.ToString("HH:mm"));
+                        tid.Value = tidarr;
+                        isgoing = false;
+                        x++;
+                    }
+                    else
+                    {
+                        if (isgoing)
+                        {
+                            tid = new ComboboxItem();
+                            tid.Text = time.ToString("HH:mm") + " - " + thisList[0];
+                            tidarr = new returnObj(thisList[1]);
+                            tidarr.Add(time.ToString("HH:mm"));
+                            tid.Value = tidarr;
+                        }
+                        else
+                        {
+                            tid = new ComboboxItem();
+                            tid.Text = time.ToString("HH:mm");
+                            tidarr = new returnObj(0);
+                            tidarr.Add(time.ToString("HH:mm"));
+                            tid.Value = tidarr;
+                        }
+                    }
+
+
+                    Tider.Items.Add(tid);
+                }
+                catch
+                {
+
+                    tid = new ComboboxItem();
+                    tid.Text = time.ToString("HH:mm");
+                    tidarr = new returnObj(0);
+                    tidarr.Add(time.ToString("HH:mm"));
+                    tid.Value = tidarr;
+
+
+                    Tider.Items.Add(tid);
+                }
+            }
+
+        }
+
+        private void PatientDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string person;
+            string patientid;
+            string lokaleid;
+            int personale = (PersonaleDropdown.SelectedItem as ComboboxItem).Value[0];
+            if (personale == 0)
+            {
+                person = "";
+            }
+            else
+            {
+                person = personale.ToString();
+            }
+            int patient = (PatientDropdown.SelectedItem as ComboboxItem).Value[0];
+            if (patient == 0)
+            {
+                patientid = "";
+            }
+            else
+            {
+                patientid = patient.ToString();
+            }
+            int lokale = (LokaleDropdown.SelectedItem as ComboboxItem).Value[0];
+            if (lokale == 0)
+            {
+                lokaleid = "";
+            }
+            else
+            {
+                lokaleid = lokale.ToString();
+            }
+            string dato = timePicker.Text;
+            Behandling behandling = new Behandling();
+            returnObj res = behandling.getAll(person, lokaleid, patientid, dato);
+            MySqlDataReader reader = res[1].ExecuteReader();
+            ArrayList list = new ArrayList();
+            while (reader.Read())
+            {
+                returnObj newlist = new returnObj(reader["navn"].ToString());
+                newlist.Add(Convert.ToInt32(reader["behandlingsid"]));
+                newlist.Add(Convert.ToInt32(reader["start"]));
+                newlist.Add(Convert.ToInt32(reader["slut"]));
+                list.Add(newlist);
+            }
+
+            ComboboxItem tid;
+            returnObj tidarr;
+            DateTime time = timePicker.Value;
+            TimeSpan ts = new TimeSpan(7, 30, 0);
+            time = time.Date + ts;
+            Tider.Items.Clear();
+            bool isgoing = false;
+            int x = 0;
+            for (int i = 0; i < 16; i++)
+            {
+                time = time.AddMinutes(30.00);
+                try
+                {
+                    returnObj thisList = (returnObj)list[x];
+
+                    if (thisList[2] == i)
+                    {
+                        tid = new ComboboxItem();
+                        tid.Text = time.ToString("HH:mm") + " - " + thisList[0];
+                        tidarr = new returnObj(thisList[1]);
+                        tidarr.Add(time.ToString("HH:mm"));
+                        tid.Value = tidarr;
+                        isgoing = true;
+
+                    }
+                    else if (thisList[3] == i)
+                    {
+                        tid = new ComboboxItem();
+                        tid.Text = time.ToString("HH:mm") + " - " + thisList[0];
+                        tidarr = new returnObj(thisList[1]);
+                        tidarr.Add(time.ToString("HH:mm"));
+                        tid.Value = tidarr;
+                        isgoing = false;
+                        x++;
+                    }
+                    else
+                    {
+                        if (isgoing)
+                        {
+                            tid = new ComboboxItem();
+                            tid.Text = time.ToString("HH:mm") + " - " + thisList[0];
+                            tidarr = new returnObj(thisList[1]);
+                            tidarr.Add(time.ToString("HH:mm"));
+                            tid.Value = tidarr;
+                        }
+                        else
+                        {
+                            tid = new ComboboxItem();
+                            tid.Text = time.ToString("HH:mm");
+                            tidarr = new returnObj(0);
+                            tidarr.Add(time.ToString("HH:mm"));
+                            tid.Value = tidarr;
+                        }
+                    }
+
+
+                    Tider.Items.Add(tid);
+                }
+                catch
+                {
+
+                    tid = new ComboboxItem();
+                    tid.Text = time.ToString("HH:mm");
+                    tidarr = new returnObj(0);
+                    tidarr.Add(time.ToString("HH:mm"));
+                    tid.Value = tidarr;
+
+
+                    Tider.Items.Add(tid);
+                }
+            }
+
+        }
+
+        private void Tider_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

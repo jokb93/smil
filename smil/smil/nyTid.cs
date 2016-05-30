@@ -225,6 +225,7 @@ namespace smil
             {
 
             }
+            Connect.Con.Close();
 
         }
 
@@ -253,6 +254,7 @@ namespace smil
             string dato = datoBox.Text;
             returnObj res = behandling.opretTid(patientId, dato, lokaleId, personaleId, start, slut);
             MessageBox.Show(res[1]);
+            this.Close();
         }
     }
 }

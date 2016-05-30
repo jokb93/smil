@@ -90,6 +90,24 @@ namespace smil
                 return Arr;
             }
         }
-        
+
+        public returnObj getAll(string personale, string lokale, string patient, string dato)
+        {
+            if (Connect.select("SELECT * FROM `behandling` INNER JOIN `behandlingspersonale` ON `behandlingspersonale`.behandlingsid=`behandling`.`id` INNER JOIN `behandlingslokale` ON `behandlingslokale`.behandlingid=`behandling`.`id` INNER JOIN `patient` ON `patient`.id=`behandling`.`patientid` WHERE `dato` = '" + dato + "' AND lokaleid LIKE '%" + lokale + "%' AND personaleid LIKE '%" + personale + "%' AND patientid LIKE '%" + patient + "%' "))
+            {
+
+                returnObj Arr = new returnObj(3);
+                Arr.Add(Connect.cmd);
+                Arr.Add("SELECT * FROM `behandling` INNER JOIN `behandlingspersonale` ON `behandlingspersonale`.behandlingsid=`behandling`.`id` INNER JOIN `behandlingslokale` ON `behandlingslokale`.behandlingid=`behandling`.`id` WHERE `dato` = '" + dato + "' AND lokaleid LIKE '%" + lokale + "%' AND personaleid LIKE '%" + personale + "%' AND patientid LIKE '%" + patient + "%' ");
+                return Arr;
+            }
+            else
+            {
+                returnObj Arr = new returnObj(0);  // type 2 er opret lokale
+                Arr.Add("forbindelses fejl");
+
+                return Arr;
+            }
+        }
     }
 }

@@ -58,11 +58,13 @@
             // 
             // timePicker
             // 
+            this.timePicker.CustomFormat = "yyyy-MM-dd";
+            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.timePicker.Location = new System.Drawing.Point(105, 31);
             this.timePicker.Name = "timePicker";
             this.timePicker.Size = new System.Drawing.Size(200, 20);
             this.timePicker.TabIndex = 2;
-            this.timePicker.Value = new System.DateTime(2016, 5, 25, 0, 0, 0, 0);
+            this.timePicker.Value = new System.DateTime(2016, 5, 30, 0, 0, 0, 0);
             this.timePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label1
@@ -110,6 +112,7 @@
             this.LokaleDropdown.Name = "LokaleDropdown";
             this.LokaleDropdown.Size = new System.Drawing.Size(200, 21);
             this.LokaleDropdown.TabIndex = 8;
+            this.LokaleDropdown.SelectedIndexChanged += new System.EventHandler(this.LokaleDropdown_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -157,6 +160,7 @@
             this.PatientDropdown.Name = "PatientDropdown";
             this.PatientDropdown.Size = new System.Drawing.Size(200, 21);
             this.PatientDropdown.TabIndex = 13;
+            this.PatientDropdown.SelectedIndexChanged += new System.EventHandler(this.PatientDropdown_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -209,6 +213,7 @@
             this.Tider.Size = new System.Drawing.Size(300, 402);
             this.Tider.TabIndex = 17;
             this.Tider.SelectedIndexChanged += new System.EventHandler(this.Tider_SelectedIndexChanged);
+            this.Tider.DoubleClick += new System.EventHandler(this.Tider_MouseDoubleClick);
             // 
             // Form1
             // 
