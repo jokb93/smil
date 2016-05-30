@@ -347,8 +347,13 @@ namespace smil
             try
             {
                 int behandlingsId = (Tider.SelectedItem as ComboboxItem).Value[0];
-
-                MessageBox.Show(behandlingsId.ToString());
+                if (behandlingsId > 0)
+                {
+                    arbejder.Visible = true;
+                    BehandlingsInformation form = new BehandlingsInformation(behandlingsId);
+                    form.FormClosed += new FormClosedEventHandler(ChildFormClosed);
+                    form.Show();
+                }
             }
             catch
             {

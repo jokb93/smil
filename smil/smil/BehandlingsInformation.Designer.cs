@@ -34,12 +34,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.Label();
-            this.behandling = new System.Windows.Forms.Label();
+            this.behandlingsnavn = new System.Windows.Forms.Label();
             this.lokale = new System.Windows.Forms.Label();
             this.personale = new System.Windows.Forms.Label();
             this.patient = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.dato = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -96,14 +98,14 @@
             this.id.Size = new System.Drawing.Size(174, 13);
             this.id.TabIndex = 9;
             // 
-            // behandling
+            // behandlingsnavn
             // 
-            this.behandling.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.behandling.Location = new System.Drawing.Point(95, 80);
-            this.behandling.Name = "behandling";
-            this.behandling.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.behandling.Size = new System.Drawing.Size(174, 13);
-            this.behandling.TabIndex = 10;
+            this.behandlingsnavn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.behandlingsnavn.Location = new System.Drawing.Point(95, 80);
+            this.behandlingsnavn.Name = "behandlingsnavn";
+            this.behandlingsnavn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.behandlingsnavn.Size = new System.Drawing.Size(174, 13);
+            this.behandlingsnavn.TabIndex = 10;
             // 
             // lokale
             // 
@@ -134,7 +136,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(174, 123);
+            this.button1.Location = new System.Drawing.Point(173, 158);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(93, 23);
             this.button1.TabIndex = 14;
@@ -143,24 +145,44 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(75, 123);
+            this.button2.Location = new System.Drawing.Point(74, 158);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(93, 23);
             this.button2.TabIndex = 15;
             this.button2.Text = "Luk";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // dato
+            // 
+            this.dato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dato.Location = new System.Drawing.Point(96, 125);
+            this.dato.Name = "dato";
+            this.dato.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dato.Size = new System.Drawing.Size(174, 13);
+            this.dato.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 125);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Dato:";
+            // 
             // BehandlingsInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 153);
+            this.ClientSize = new System.Drawing.Size(284, 193);
+            this.Controls.Add(this.dato);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.patient);
             this.Controls.Add(this.personale);
             this.Controls.Add(this.lokale);
-            this.Controls.Add(this.behandling);
+            this.Controls.Add(this.behandlingsnavn);
             this.Controls.Add(this.id);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -184,11 +206,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label id;
-        private System.Windows.Forms.Label behandling;
+        private System.Windows.Forms.Label behandlingsnavn;
         private System.Windows.Forms.Label lokale;
         private System.Windows.Forms.Label personale;
         private System.Windows.Forms.Label patient;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label dato;
+        private System.Windows.Forms.Label label7;
     }
 }
