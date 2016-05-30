@@ -275,6 +275,8 @@ namespace smil
 
 
                     Tider.Items.Add(tid);
+
+                    Connect.Con.Close();
                 }
                 catch
                 {
@@ -462,6 +464,8 @@ namespace smil
 
 
                     Tider.Items.Add(tid);
+
+                    Connect.Con.Close();
                 }
                 catch {
                     
@@ -581,6 +585,8 @@ namespace smil
 
 
                     Tider.Items.Add(tid);
+
+                    Connect.Con.Close();
                 }
                 catch
                 {
@@ -593,6 +599,7 @@ namespace smil
 
 
                     Tider.Items.Add(tid);
+
                 }
             }
 
@@ -701,6 +708,8 @@ namespace smil
 
 
                     Tider.Items.Add(tid);
+
+                    Connect.Con.Close();
                 }
                 catch
                 {

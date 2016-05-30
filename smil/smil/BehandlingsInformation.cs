@@ -30,7 +30,6 @@ namespace smil
             behandlingsnavn.Text = reader["behandlingsnavn"].ToString();
             lokale.Text = reader["lokaleid"].ToString();
             dato.Text = reader["dato"].ToString();
-            Connect.Con.Close();
         }
 
         private void BehandlingsInformation_Load(object sender, EventArgs e)
