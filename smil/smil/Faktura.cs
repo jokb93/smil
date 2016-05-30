@@ -10,9 +10,9 @@ namespace smil
     class Faktura
     {
 
-        public returnObj Fakt(double[] pris, string[] behandling, string[] kundeinfo)
+        public returnObj Fakt(int pris, string behandling, returnObj kundeinfo)
         {
-            //kundeinfo pladser [navn, adresse, postnummer, by, kundenr, fakturanr, dato]
+            //kundeinfo pladser [navn, adresse, postnummer, kundenr, fakturanr, dato]
             try
             {
                 string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);//fundet på gooooooooogle
@@ -27,53 +27,44 @@ namespace smil
                     string b = kundeinfo[0].PadRight(51);
                     string b2 = kundeinfo[1].PadRight(51);
                     string b3 = kundeinfo[2].PadRight(51);
-                    string b4 = kundeinfo[3].PadRight(51);
                     sw.Write(b);
-                    sw.WriteLine("Kundenr:    " + kundeinfo[4]);
+                    sw.WriteLine("Kundenr:    " + kundeinfo[3]);
                     sw.Write(b2);
-                    sw.WriteLine("Fakturanr:  " + kundeinfo[5]);
+                    sw.WriteLine("Fakturanr:  " + kundeinfo[4]);
                     sw.Write(b3);
-                    sw.WriteLine("Dato:       " + kundeinfo[6]);
-                    sw.Write(b4);
+                    sw.WriteLine("Dato:       " + kundeinfo[5]);
                     sw.WriteLine("");
                     sw.WriteLine("");
                     sw.WriteLine("-------------------------------------------------------------------------");
                     sw.WriteLine("Behandling                                                    Pris       ");
                     sw.WriteLine("-------------------------------------------------------------------------");
-                    for (int i = 0; i < pris.Length; i++)
+                    sw.Write(behandling.PadRight(61));
+                    if (pris < 10)
                     {
-                        sw.Write(behandling[i].PadRight(61));
-                        if (pris[i] < 10)
-                        {
-                            sw.WriteLine("    " + pris[i]);
-                        }
-                        else if (pris[i] < 100)
-                        {
-                            sw.WriteLine("   " + pris[i]);
-                        }
-                        else if (pris[i] < 1000)
-                        {
-                            sw.WriteLine("  " + pris[i]);
-                        }
-                        else if (pris[i] < 10000)
-                        {
-                            sw.WriteLine(" " + pris[i]);
-                        }
-                        else if (pris[i] < 100000)
-                        {
-                            sw.WriteLine(pris[i]);
-                        }
+                        sw.WriteLine("    " + pris);
                     }
-                    int linjer = 35 - pris.Length;
+                    else if (pris < 100)
+                    {
+                        sw.WriteLine("   " + pris);
+                    }
+                    else if (pris < 1000)
+                    {
+                        sw.WriteLine("  " + pris);
+                    }
+                    else if (pris < 10000)
+                    {
+                        sw.WriteLine(" " + pris);
+                    }
+                    else if (pris < 100000)
+                    {
+                        sw.WriteLine(pris);
+                    }
+                    int linjer = 34;
                     for (int j = 0; j < linjer; j++)
                     {
                         sw.WriteLine("");
                     }
-                    double samletpris = 0;
-                    for (int x = 0; x < pris.Length; x++)
-                    {
-                        samletpris = samletpris + pris[x];
-                    }
+                    double samletpris = pris;
                     double prismoms = samletpris*1.25;
                     sw.WriteLine("-------------------------------------------------------------------------");
                     sw.WriteLine("                                            Pris før moms:   " + samletpris);

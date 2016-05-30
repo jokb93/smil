@@ -56,6 +56,7 @@ namespace smil
             MySqlDataReader reader = MemArr[1].ExecuteReader();
             reader.Read();
             navnBox.Text = reader["navn"].ToString();
+            prisBox.Text = reader["pris"].ToString();
             Connect.Con.Close();
         }
 
@@ -64,7 +65,8 @@ namespace smil
             int id = (personaleDropdown.SelectedItem as ComboboxItem).Value[0];
             Kvalifikationer kval = new Kvalifikationer();
             string navn = navnBox.Text;
-            kval.retKvalifikation(navn, id);
+            decimal pris = prisBox.Value;
+            kval.retKvalifikation(navn, pris, id);
             
             MessageBox.Show("Ændringer er gemt");
             this.Close();

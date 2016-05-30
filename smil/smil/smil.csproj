@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BehandlingsInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BehandlingsInformation.Designer.cs">
+      <DependentUpon>BehandlingsInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComboboxItem.cs" />
     <Compile Include="ConfirmKvalDelete.cs">
       <SubType>Form</SubType>
@@ -101,6 +107,18 @@
     <Compile Include="LokaleForm.Designer.cs">
       <DependentUpon>LokaleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="nyTid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nyTid.Designer.cs">
+      <DependentUpon>nyTid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpretTid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpretTid.Designer.cs">
+      <DependentUpon>OpretTid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patient.cs" />
     <Compile Include="Personale.cs" />
     <Compile Include="PersonaleForm.cs">
@@ -119,6 +137,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="returnObj.cs" />
     <Compile Include="returnObjEngine.cs" />
+    <EmbeddedResource Include="BehandlingsInformation.resx">
+      <DependentUpon>BehandlingsInformation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfirmKvalDelete.resx">
       <DependentUpon>ConfirmKvalDelete.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LokaleForm.resx">
       <DependentUpon>LokaleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nyTid.resx">
+      <DependentUpon>nyTid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PersonaleForm.resx">
       <DependentUpon>PersonaleForm.cs</DependentUpon>
