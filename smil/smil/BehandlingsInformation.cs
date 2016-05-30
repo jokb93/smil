@@ -15,6 +15,14 @@ namespace smil
     public partial class BehandlingsInformation : Form
     {
         int behandlingsId;
+        string date;
+        string adresse;
+        string behandling;
+        string navn;
+        int pris;
+        int kundenr;
+        int post;
+        int fakturanr;
         public BehandlingsInformation(int behandlingsId)
         {
             InitializeComponent();
@@ -29,12 +37,40 @@ namespace smil
             id.Text = behandlingsId.ToString();
             behandlingsnavn.Text = reader["behandlingsnavn"].ToString();
             lokale.Text = reader["lokaleid"].ToString();
-            dato.Text = reader["dato"].ToString();
+            dato.Text = reader["dato"].ToString().Substring(0,10);
+            date = reader["dato"].ToString().Substring(0, 10);
+            pris = Convert.ToInt32(reader["pris"]);
+            post = Convert.ToInt32(reader["post"]);
+            adresse = reader["adresse"].ToString();
+            navn = reader["navn"].ToString();
+            kundenr = Convert.ToInt32(reader["kundenr"]);
+            fakturanr = behandlingsId;
+            this.behandling = reader["behandlingsnavn"].ToString();
+
         }
 
         private void BehandlingsInformation_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Faktura faktura = new Faktura();
+
+            returnObj kundeArr = new returnObj(navn);
+            kundeArr.Add(adresse);
+            kundeArr.Add(post.ToString());
+            kundeArr.Add(kundenr.ToString());
+            kundeArr.Add(behandlingsId.ToString());
+            kundeArr.Add(date);
+
+            faktura.Fakt(pris,behandling, kundeArr);
         }
     }
 }

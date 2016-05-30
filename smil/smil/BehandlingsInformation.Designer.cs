@@ -38,7 +38,7 @@
             this.lokale = new System.Windows.Forms.Label();
             this.personale = new System.Windows.Forms.Label();
             this.patient = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.udskrivFaktura = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dato = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -134,14 +134,15 @@
             this.patient.Size = new System.Drawing.Size(174, 13);
             this.patient.TabIndex = 13;
             // 
-            // button1
+            // udskrivFaktura
             // 
-            this.button1.Location = new System.Drawing.Point(173, 158);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Udskriv faktura";
-            this.button1.UseVisualStyleBackColor = true;
+            this.udskrivFaktura.Location = new System.Drawing.Point(173, 158);
+            this.udskrivFaktura.Name = "udskrivFaktura";
+            this.udskrivFaktura.Size = new System.Drawing.Size(93, 23);
+            this.udskrivFaktura.TabIndex = 14;
+            this.udskrivFaktura.Text = "Udskriv faktura";
+            this.udskrivFaktura.UseVisualStyleBackColor = true;
+            this.udskrivFaktura.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -151,6 +152,7 @@
             this.button2.TabIndex = 15;
             this.button2.Text = "Luk";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dato
             // 
@@ -178,7 +180,7 @@
             this.Controls.Add(this.dato);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.udskrivFaktura);
             this.Controls.Add(this.patient);
             this.Controls.Add(this.personale);
             this.Controls.Add(this.lokale);
@@ -210,7 +212,7 @@
         private System.Windows.Forms.Label lokale;
         private System.Windows.Forms.Label personale;
         private System.Windows.Forms.Label patient;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button udskrivFaktura;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label dato;
         private System.Windows.Forms.Label label7;

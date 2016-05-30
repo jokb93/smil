@@ -112,7 +112,7 @@ namespace smil
 
         public returnObj getSpecific(int id)
         {
-            if (Connect.select("SELECT `behandlingsid`,`personale`.navn as personale, `kvalifikationsKatalog`.navn as behandlingsnavn, `patient`.navn as patient, lokaleid FROM `behandling` INNER JOIN `behandlingspersonale` ON `behandlingspersonale`.behandlingsid=`behandling`.`id` INNER JOIN `personale` ON `personale`.id=`behandlingspersonale`.`personaleid` INNER JOIN `behandlingslokale` ON `behandlingslokale`.behandlingid=`behandling`.`id` INNER JOIN `kvalifikationsKatalog` ON `kvalifikationsKatalog`.type=`behandling`.`type` INNER JOIN `patient` ON `patient`.id=`behandling`.`patientid` WHERE `behandlingsid` = " + id.ToString()))
+            if (Connect.select("SELECT `post`,`adresse`,`pris`,`dato`,`behandlingsid`,`personale`.navn as personale,`patient`.id as kundenr, `kvalifikationsKatalog`.navn as behandlingsnavn, `patient`.navn as patient, lokaleid FROM `behandling` INNER JOIN `behandlingspersonale` ON `behandlingspersonale`.behandlingsid=`behandling`.`id` INNER JOIN `personale` ON `personale`.id=`behandlingspersonale`.`personaleid` INNER JOIN `behandlingslokale` ON `behandlingslokale`.behandlingid=`behandling`.`id` INNER JOIN `kvalifikationsKatalog` ON `kvalifikationsKatalog`.type=`behandling`.`type` INNER JOIN `patient` ON `patient`.id=`behandling`.`patientid` WHERE `behandlingsid` = " + id.ToString()))
             {
 
                 returnObj Arr = new returnObj(3);
