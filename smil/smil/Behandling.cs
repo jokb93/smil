@@ -10,9 +10,9 @@ namespace smil
     class Behandling
     {
 
-        public returnObj opretTid(int patientid, string date, int lokaleId, int personaleId, int start, int slut)
+        public returnObj opretTid(int patientid, string date, int lokaleId, int personaleId, int start, int slut, int type)
         {
-            if (Connect.query("INSERT INTO `SMIL`.`behandling` (`patientid`, `dato`, `start`, `slut`) VALUES ('" + patientid + "', '" + date + "', '" + start + "', '" + slut + "');"))
+            if (Connect.query("INSERT INTO `SMIL`.`behandling` (`patientid`, `dato`, `start`, `slut`, `type`) VALUES ('" + patientid + "', '" + date + "', '" + start + "', '" + slut + "', '" + type + "');"))
             {
                 int behandlingsId = Connect.insertID();
                 if (Connect.query("INSERT INTO `SMIL`.`behandlingslokale` (`behandlingid`, `lokaleid`) VALUES ('"+ behandlingsId + "', '"+ lokaleId+ "');"))
@@ -93,12 +93,27 @@ namespace smil
 
         public returnObj getAll(string personale, string lokale, string patient, string dato)
         {
-            if (Connect.select("SELECT * FROM `behandling` INNER JOIN `behandlingspersonale` ON `behandlingspersonale`.behandlingsid=`behandling`.`id` INNER JOIN `behandlingslokale` ON `behandlingslokale`.behandlingid=`behandling`.`id` INNER JOIN `patient` ON `patient`.id=`behandling`.`patientid` WHERE `dato` = '" + dato + "' AND lokaleid LIKE '%" + lokale + "%' AND personaleid LIKE '%" + personale + "%' AND patientid LIKE '%" + patient + "%' "))
+
+            string sql = "SELECT * FROM `behandling` INNER JOIN `behandlingspersonale` ON `behandlingspersonale`.behandlingsid=`behandling`.`id` INNER JOIN `behandlingslokale` ON `behandlingslokale`.behandlingid=`behandling`.`id` INNER JOIN `patient` ON `patient`.id=`behandling`.`patientid` WHERE `dato` = '" + dato + "'";
+            if (patient != "")
+            {
+                sql = sql + " AND patientid = '" + patient + "'";
+            }
+            if (lokale != "")
+            {
+                sql = sql + " AND lokaleid = '" + lokale + "'";
+            }
+            if (personale != "")
+            {
+                sql = sql + " AND personaleid = '" + personale + "'";
+            }
+            sql = sql + " ORDER BY `behandling`.`start` ASC";
+            if (Connect.select(sql))
             {
 
                 returnObj Arr = new returnObj(3);
                 Arr.Add(Connect.cmd);
-                Arr.Add("SELECT * FROM `behandling` INNER JOIN `behandlingspersonale` ON `behandlingspersonale`.behandlingsid=`behandling`.`id` INNER JOIN `behandlingslokale` ON `behandlingslokale`.behandlingid=`behandling`.`id` WHERE `dato` = '" + dato + "' AND lokaleid LIKE '%" + lokale + "%' AND personaleid LIKE '%" + personale + "%' AND patientid LIKE '%" + patient + "%' ");
+                Arr.Add(sql);
                 return Arr;
             }
             else

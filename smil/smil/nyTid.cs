@@ -34,8 +34,6 @@ namespace smil
                     behandlingsBox.Items.Add(item);
                 }
                 Connect.Con.Close();
-
-                behandlingsBox.SelectedIndex = 0;
             }
             catch
             {
@@ -61,8 +59,6 @@ namespace smil
                     patientBox.Items.Add(item);
                 }
                 Connect.Con.Close();
-
-                patientBox.SelectedIndex = 0;
             }
             catch
             {
@@ -249,10 +245,11 @@ namespace smil
             int patientId = (patientBox.SelectedItem as ComboboxItem).Value[0];
             int lokaleId = (lokaleBox.SelectedItem as ComboboxItem).Value[0];
             int personaleId = (legeBox.SelectedItem as ComboboxItem).Value[0];
+            int type = (behandlingsBox.SelectedItem as ComboboxItem).Value[0];
             int start = startTid.SelectedIndex + 1;
             int slut = endBox.SelectedIndex + start;
             string dato = datoBox.Text;
-            returnObj res = behandling.opretTid(patientId, dato, lokaleId, personaleId, start, slut);
+            returnObj res = behandling.opretTid(patientId, dato, lokaleId, personaleId, start, slut, type);
             MessageBox.Show(res[1]);
             this.Close();
         }
